@@ -1,0 +1,32 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Politician Profile</title>
+        <jsp:include page="/tem">
+    <%--        <jsp:param name="NAME" value="NAME"/>--%>
+    <%--    </jsp:include>--%>
+</head>
+<body>
+<%--<jsp:include page="/FOLDER NAME/partials/navbar.jsp"/>--%>
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <h1>Politician Name</h1>
+
+                <!-- button to view recent trades -->
+                <button>Recent Trades</button>
+
+                <!-- button to add card to favorites -->
+                <button>Add to Favorites</button>
+            </div>
+        </div>
+    </div>
+</div>
+<%--<jsp:include page="/FOLDER NAME/partials/footer.jsp"/>--%>
+<%--<jsp:include page="/FOLDER NAME/partials/scripts.jsp"/>--%>
+</body>
+</html>
