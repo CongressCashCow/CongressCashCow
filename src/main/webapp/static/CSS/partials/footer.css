@@ -1,0 +1,27 @@
+footer {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer a:hover {
+    color: #ccc;
+}
+
+footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+footer i {
+    width: 25px;
+}
+
+@media (min-width: 768px) {
+    footer {
+        font-size: 16px;
+    }
+}
