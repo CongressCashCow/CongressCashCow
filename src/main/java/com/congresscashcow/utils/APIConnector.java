@@ -1,7 +1,7 @@
-package com.congresscashcow.congresscashhow.utils;
+package com.congresscashcow.utils;
 
-import com.congresscashcow.congresscashhow.models.Politician;
-import com.congresscashcow.congresscashhow.models.Trade;
+import com.congresscashcow.models.Politician;
+import com.congresscashcow.models.Trade;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kong.unirest.HttpResponse;

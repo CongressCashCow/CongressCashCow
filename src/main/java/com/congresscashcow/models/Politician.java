@@ -1,7 +1,9 @@
-package com.congresscashcow.congresscashhow.models;
+package com.congresscashcow.models;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.congresscashcow.models.Trade;
 
 public class Politician {
     private long id;

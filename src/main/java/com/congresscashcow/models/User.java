@@ -1,4 +1,4 @@
-package com.congresscashcow.congresscashhow.models;
+package com.congresscashcow.models;
 
 import jakarta.persistence.*;
 
