@@ -2,12 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
-    <title>Home</title>
+    <title>Register</title>
 </head>
 <body>
 <nav th:replace="webapp/templates/partials/navbar-user :: navbar-user(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
-
-<h1>This is the home page</h1>
-
+<h1>This is the registration page</h1>
 </body>
 </html>
