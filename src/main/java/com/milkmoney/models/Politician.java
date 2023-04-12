@@ -1,9 +1,8 @@
-package com.congresscashcow.models;
+package com.milkmoney.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.congresscashcow.models.Trade;
 import jakarta.persistence.*;
 
 @Entity

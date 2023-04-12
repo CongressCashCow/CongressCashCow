@@ -1,4 +1,4 @@
-package com.congresscashcow.models;
+package com.milkmoney.models;
 
 public class Trade {
     private long id;

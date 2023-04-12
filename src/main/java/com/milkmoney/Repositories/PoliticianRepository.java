@@ -1,4 +1,4 @@
-package com.congresscashcow.Repositories;
+package com.milkmoney.Repositories;
 
 public interface PoliticianRepository {
 }
