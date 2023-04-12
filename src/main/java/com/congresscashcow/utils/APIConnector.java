@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class APIConnector {
-    private Date upadtedDate;
+    private Date updatedDate = new Date();
     static APIConnector api = new APIConnector();
     private  Set<Politician> politicians = new HashSet<Politician>();
     private  Set<Trade> trades = new HashSet<Trade>();
@@ -141,4 +141,11 @@ int k = 0;
 
     }
 
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate() {
+        this.updatedDate = new Date();
+    }
 }
