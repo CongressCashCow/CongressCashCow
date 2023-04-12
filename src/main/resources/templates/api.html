@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>api testing</h1>
+<div th:each="pol : ${pols}">
+    <img th:src="${pol.getImageURL()}">
+
+    <p th:text="${pol.name}" />
+    <div th:each="trade : ${pol.getTrades()}">
+        <span th:text="${trade.getTicker()}" />
+        <span th:text="${trade.getDate()}" />
+        <span th:text="${trade.getTransactionType()}" />
+        <span th:text="${trade.getRange()}" />
+    </div>
+    
+</div>
+</body>
+</html>

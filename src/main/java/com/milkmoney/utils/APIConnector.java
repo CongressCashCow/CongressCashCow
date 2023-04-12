@@ -6,16 +6,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class APIConnector {
-    private Date updatedDate = new Date();
+
+
+    private static Date updatedDate = new Date();
     static APIConnector api = new APIConnector();
-    private  Set<Politician> politicians = new HashSet<Politician>();
-    private  Set<Trade> trades = new HashSet<Trade>();
-    private  HashMap<Long, String> politicianIdKeeper = new HashMap<Long, String>(); //sims db; rm after db
+    private  static Set<Politician> politicians = new HashSet<Politician>();
+    private  static Set<Trade> trades = new HashSet<Trade>();
+    private static HashMap<Long, String> politicianIdKeeper = new HashMap<Long, String>(); //sims db; rm after db
     private static String getData(){
         HttpResponse<String> response = Unirest.get("https://api.quiverquant.com/beta/bulk/congresstrading")
                 .header("accept", "application/json")
@@ -25,8 +29,8 @@ public class APIConnector {
 
         return response.getBody();
     }
-     int r = 0;
-    private  void verification() throws InterruptedException {
+     static int r = 0;
+    private static void verification() throws InterruptedException {
         while (r < 100) {
             System.out.println("running");
             TimeUnit.SECONDS.sleep(10);
@@ -37,19 +41,20 @@ public class APIConnector {
             r++;
         }
     }
-int k = 0;
-    private  void rerunner() throws InterruptedException {
+    static int k = 0;
+    private static void rerunner() throws InterruptedException {
         while (k < 100) {
             System.out.println("calling");
             TimeUnit.SECONDS.sleep(32);
 
-            api.formatData();
+            api.update();
             k++;
         }
     }
 
 
-    private  void formatData(){
+    public static void update(){
+        trades.clear();
 
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -57,8 +62,6 @@ int k = 0;
             ArrayList<Object> unformattedObjs = mapper.readValue(getData(),
                     new TypeReference<ArrayList<Object>>(){});
 
-//            List<String> polNames = new ArrayList<>();
-//            List<Politician> pols = new ArrayList<>();
             long id = politicianIdKeeper.size();
             long tradeId = trades.size();
             for(Object obj : unformattedObjs){
@@ -74,6 +77,7 @@ int k = 0;
                     p.setName(rep);
                     politicians.add(p);
                     politicianIdKeeper.put(id,rep);
+
                     id++;
                 }else{
                     for(Politician pol : politicians){
@@ -93,59 +97,62 @@ int k = 0;
                 p.addTrade(trade);
                 tradeId++;
             }
-//            System.out.println(politicians.size());
-//            for(Politician pol : pols){
-//                counter+=pol.getTrades().size();
-//            }
 
-//            System.out.println(unformattedObjs.toString().length());
         }
 
         catch (IOException e) {
             e.printStackTrace();
         }
     }
+    public static void updateImageURLs(){
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            List<PolImg> listPol = mapper.readValue(new File("src/main/resources/static/images.json"), new TypeReference<List<PolImg>>(){});
+            for (PolImg pig : listPol) {
 
-    public Set<Politician> getPoliticians() {
+                for(Politician p : politicians){
+                    if(p.getName().toLowerCase().equals(pig.getName())){
+                        p.setImageURL(pig.getImage());
+                    }
+                }
+            }
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public static Set<Politician> getPoliticians() {
         return politicians;
     }
 
-    public void setPoliticians(Set<Politician> politicians) {
-        this.politicians = politicians;
+    public static void setPoliticians(Set<Politician> politicianz) {
+        politicians = politicianz;
     }
 
-    public void addPolitician(Politician politician){
-        this.politicians.add(politician);
+    public static void addPolitician(Politician politician){
+        politicians.add(politician);
     }
 
-    public Set<Trade> getTrades() {
+    public static Set<Trade> getTrades() {
         return trades;
     }
 
-    public void setTrades(Set<Trade> trades) {
-        this.trades = trades;
+    public static void setTrades(Set<Trade> tradez) {
+        trades = tradez;
     }
 
-    public static void main(String[] args) {
-        try {
+//    public static void main(String[] args) {
+//        try {
+//            api.update();
+//        }
+//        catch (Exception e ){
+//            System.out.println(e);
+//        }
+//    }
 
-            api.formatData();
-            api.verification();
-            api.rerunner();
-//            verification();
-        }
-        catch (Exception e ){
-            System.out.println(e);
-        }
-//    formatData();
-
-    }
-
-    public Date getUpdatedDate() {
+    public static Date getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdatedDate() {
-        this.updatedDate = new Date();
-    }
 }
