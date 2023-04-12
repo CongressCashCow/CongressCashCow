@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+    <link th:replace="partials/partials :: bootstrap">
+    <link rel="stylesheet" href="/static/CSS/partials/navbar-user.css">
+</head>
+<body>
+<nav th:replace="partials/partials :: navbar-user(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<h1>This is the registration page</h1>
+
+
+<footer th:replace="partials/partials :: footer"></footer>
+<script th:replace="partials/partials :: bootstrap-footer"></script>
+</body>
+</html>
