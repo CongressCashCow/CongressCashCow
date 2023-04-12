@@ -1,12 +1,43 @@
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index User</title>
+
 </head>
 <body>
 
-<h1>This is the home page</h1>
+<!-- Homepage -->
+<p>As a user, you can view the homepage without limited/censored information.</p>
+<p>As a user, you can click on politician cards and be directed to a specific page for each politician which shows a
+    detailed breakdown of their trading history.</p>
+<p>As a user, you can search for a politician by name.</p>
 
+<!-- Politician Specific Page -->
+<h2>Politician Trading History: [Politician Name]</h2>
+<p>Here, you can view a detailed breakdown of [Politician Name]'s trading history.</p>
+<button>Favorite</button> <!-- Add favorite button -->
+<button>Unfavorite</button> <!-- Remove favorite button -->
+
+<!-- Profile Page -->
+<h2>My Profile</h2>
+<p>Here, you can view your profile details and your favorite politicians.</p>
+<ul>
+    <li>Username: [Username]</li>
+    <li>Email: [Email Address]</li>
+    <li>Favorite Politicians:</li>
+    </ul>
+<ul>
+        <li>[Politician Name]</li> <!-- Favorite politician list -->
+        <li>[Politician Name]</li>
+        <li>[Politician Name]</li>
+
+</ul>
+<button>Remove Favorite</button> <!-- Remove favorite politician button -->
+<button>Update Account</button> <!-- Update account details button -->
+<button>Delete Account</button> <!-- Delete account button -->
 </body>
 </html>
