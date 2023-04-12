@@ -1,4 +1,4 @@
-package com.congresscashcow.controllers;
+package com.milkmoney.controllers;
 
 public class PoliticianProfileController {
 }

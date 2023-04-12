@@ -1,10 +1,10 @@
-package com.congresscashcow.congresscashhow;
+package com.milkmoney.congresscashhow;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CongressCashCowApplicationTests {
+class MilkMoneyApplicationTests {
 
     @Test
     void contextLoads() {

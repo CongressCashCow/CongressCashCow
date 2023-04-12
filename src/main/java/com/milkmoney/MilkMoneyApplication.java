@@ -1,13 +1,13 @@
-package com.congresscashcow;
+package com.milkmoney;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CongressCashCowApplication {
+public class MilkMoneyApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CongressCashCowApplication.class, args);
+        SpringApplication.run(MilkMoneyApplication.class, args);
 
     }
 
