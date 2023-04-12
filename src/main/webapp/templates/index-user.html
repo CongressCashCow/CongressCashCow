@@ -9,6 +9,7 @@
 
 </head>
 <body>
+<nav th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
 
 <!-- Homepage -->
 <p>As a user, you can view the homepage without limited/censored information.</p>
