@@ -4,21 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.congresscashcow.models.Trade;
+import jakarta.persistence.*;
 
+@Entity
 public class Politician {
-    private long id;
-    private String polName;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column
+    private String imageURL;
+
+    @Transient
     private List<Trade> trades = new ArrayList<>();
-//    private String stockTicker;
-//    private String transType;
-//    private String rangeAmount;
+
 
     public Politician() {
     }
 
-    public Politician(String polName, List<Trade> trades) {
-        this.polName = polName;
+    public Politician(String name, List<Trade> trades) {
+        this.name = name;
         this.trades = trades;
     }
 
@@ -30,12 +39,20 @@ public class Politician {
         this.id = id;
     }
 
-    public String getPolName() {
-        return polName;
+    public String getName() {
+        return name;
     }
 
-    public void setPolName(String polName) {
-        this.polName = polName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public List<Trade> getTrades() {
