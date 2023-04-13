@@ -1,36 +1,45 @@
-package com.milkmoney.utils;
+package com.milkmoney.Services;
 
-import com.milkmoney.models.Politician;
-import com.milkmoney.models.Trade;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.milkmoney.models.Politician;
+import com.milkmoney.models.Trade;
+
+import com.milkmoney.utils.PolImg;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-
+import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class APIConnector {
+@Service
+public class APIService {
+    @Value("${apiKey}")
+    private String apiKey;
 
-    private static Date updatedDate = new Date();
-    static APIConnector api = new APIConnector();
-    private  static Set<Politician> politicians = new HashSet<Politician>();
-    private  static Set<Trade> trades = new HashSet<Trade>();
-    private static HashMap<Long, String> politicianIdKeeper = new HashMap<Long, String>(); //sims db; rm after db
-    private static String getData(){
+    @Autowired
+    public APIService(){}
+
+    private Date updatedDate = new Date();
+    private Set<Politician> politicians = new HashSet<Politician>();
+    private   Set<Trade> trades = new HashSet<Trade>();
+    private HashMap<Long, String> politicianIdKeeper = new HashMap<Long, String>(); //sims db; rm after db
+    private String getData(){
         HttpResponse<String> response = Unirest.get("https://api.quiverquant.com/beta/bulk/congresstrading")
                 .header("accept", "application/json")
                 .header("X-CSRFToken", "TyTJwjuEC7VV7mOqZ622haRaaUr0x0Ng4nrwSRFKQs7vdoBcJlK9qjAS69ghzhFu")
-                .header("Authorization", secrets.getApiKey())
+                .header("Authorization", String.format("Token %s", apiKey))
                 .asString();
 
         return response.getBody();
     }
-     static int r = 0;
-    private static void verification() throws InterruptedException {
+
+    int r = 0;
+    private  void verification() throws InterruptedException {
         while (r < 100) {
             System.out.println("running");
             TimeUnit.SECONDS.sleep(10);
@@ -41,19 +50,8 @@ public class APIConnector {
             r++;
         }
     }
-    static int k = 0;
-    private static void rerunner() throws InterruptedException {
-        while (k < 100) {
-            System.out.println("calling");
-            TimeUnit.SECONDS.sleep(32);
 
-            api.update();
-            k++;
-        }
-    }
-
-
-    public static void update(){
+    public  void update(){
         trades.clear();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -104,7 +102,7 @@ public class APIConnector {
             e.printStackTrace();
         }
     }
-    public static void updateImageURLs(){
+    public  void updateImageURLs(){
         try {
             ObjectMapper mapper = new ObjectMapper();
             List<PolImg> listPol = mapper.readValue(new File("src/main/resources/static/images.json"), new TypeReference<List<PolImg>>(){});
@@ -122,36 +120,27 @@ public class APIConnector {
         }
     }
 
-    public static Set<Politician> getPoliticians() {
+    public  Set<Politician> getPoliticians() {
         return politicians;
     }
 
-    public static void setPoliticians(Set<Politician> politicianz) {
+    public  void setPoliticians(Set<Politician> politicianz) {
         politicians = politicianz;
     }
 
-    public static void addPolitician(Politician politician){
+    public  void addPolitician(Politician politician){
         politicians.add(politician);
     }
 
-    public static Set<Trade> getTrades() {
+    public  Set<Trade> getTrades() {
         return trades;
     }
 
-    public static void setTrades(Set<Trade> tradez) {
+    public  void setTrades(Set<Trade> tradez) {
         trades = tradez;
     }
 
-//    public static void main(String[] args) {
-//        try {
-//            api.update();
-//        }
-//        catch (Exception e ){
-//            System.out.println(e);
-//        }
-//    }
-
-    public static Date getUpdatedDate() {
+    public  Date getUpdatedDate() {
         return updatedDate;
     }
 
