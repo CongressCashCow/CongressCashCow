@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name ="politicians")
 public class Politician {
 
     @Id
@@ -18,9 +19,11 @@ public class Politician {
     @Column
     private String imageURL;
 
+    @ManyToMany(mappedBy = "politicians")
+    private List<User> users;
+
     @Transient
     private List<Trade> trades = new ArrayList<>();
-
 
     public Politician() {
     }

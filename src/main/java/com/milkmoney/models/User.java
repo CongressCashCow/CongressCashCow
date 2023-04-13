@@ -2,6 +2,8 @@ package com.milkmoney.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -14,6 +16,14 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_politicians",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "politician_id")}
+    )
+    private List<Politician> politicians;
 
     public User() {
     }
