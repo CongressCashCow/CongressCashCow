@@ -1,37 +1,41 @@
 package com.milkmoney.controllers;
 
 import com.milkmoney.Repositories.PoliticianRepository;
+import com.milkmoney.Services.APIService;
 import com.milkmoney.models.Politician;
-import com.milkmoney.utils.APIConnector;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 import java.util.Set;
 
 @Controller
 public class PoliticianController {
     private final PoliticianRepository politicianDAO;
 
+
+    private APIService api;
+
 //    static APIConnector api = new APIConnector();
-    public PoliticianController(PoliticianRepository politicianDAO) {
+    public PoliticianController(PoliticianRepository politicianDAO, APIService api) {
 
         this.politicianDAO = politicianDAO;
+        this.api = api;
+
     }
 
     @GetMapping("/update")
     public String update(){
 
-        APIConnector.update();
-        APIConnector.updateImageURLs();
+        api.update();
+        api.updateImageURLs();
         savePols();
-        return "api";
+        return "redirect:/api";
     }
     @GetMapping("/api")
     public String apiView(Model model) {
-            Set<Politician> pols = APIConnector.getPoliticians();
+            Set<Politician> pols = api.getPoliticians();
 
             model.addAttribute("pols",pols);
 
@@ -39,7 +43,7 @@ public class PoliticianController {
         return "api";
     }
     public void savePols(){
-        politicianDAO.saveAll(APIConnector.getPoliticians());
+        politicianDAO.saveAll(api.getPoliticians());
     }
 
 public static void main(String[] args) {
