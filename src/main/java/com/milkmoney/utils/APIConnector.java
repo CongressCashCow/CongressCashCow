@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +14,6 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class APIConnector {
-
 
     private static Date updatedDate = new Date();
     static APIConnector api = new APIConnector();
@@ -24,7 +24,7 @@ public class APIConnector {
         HttpResponse<String> response = Unirest.get("https://api.quiverquant.com/beta/bulk/congresstrading")
                 .header("accept", "application/json")
                 .header("X-CSRFToken", "TyTJwjuEC7VV7mOqZ622haRaaUr0x0Ng4nrwSRFKQs7vdoBcJlK9qjAS69ghzhFu")
-                .header("Authorization", "Token 82af78c50f344c3615a406803c22430c314dc7df")
+                .header("Authorization", secrets.getApiKey())
                 .asString();
 
         return response.getBody();
