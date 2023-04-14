@@ -1,18 +1,23 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html xmlns:th="http://www.thymeleaf.org">
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Politician Profile</title>
-
+    <link rel="stylesheet" href="/static/CSS/main.css">
+    <link th:replace="partials/partials :: bootstrap">
 </head>
 <body>
-<div class="page-wrapper">
-    <div class="container">
+<nav th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+
+<div class="page-wrapper container-fluid d-flex justify-content-center">
+    <div class="container mb3">
         <div class="row">
-            <div class="column">
+            <div class="column text-center">
                 <h1>Politician Name</h1>
+                <p>Transaction Type</p>
+                <p>Amount</p>
+                <p>Trade Range</p>
+                <p>Transaction Date</p>
+                <p>Transaction Report Date</p>
 
                 <!-- button to view recent trades -->
                 <button>Recent Trades</button>
@@ -23,5 +28,3 @@
         </div>
     </div>
 </div>
-</body>
-</html>
