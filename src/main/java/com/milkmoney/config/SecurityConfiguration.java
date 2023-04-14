@@ -46,7 +46,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/politician-profile", "/user-profile", "/index-user", "api"
+                        "/politician-profile", "/user-profile", "/index-user", "/api", "/api/recent","/api/recent/censored"
                 )
                 .authenticated()
                 .and()
