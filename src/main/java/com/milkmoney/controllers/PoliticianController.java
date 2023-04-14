@@ -52,6 +52,22 @@ public class PoliticianController {
         model.addAttribute("trades",recentTrades);
         return "apirecent";
     }
+    @GetMapping("/api/recent/censored")
+    public String apiRecentLimited(Model model) {
+        List<Trade> trades = api.getTrades();
+        List<Trade> recentTrades = new ArrayList<>();
+        int f = 0;
+        for(Trade t : trades){
+            if(f < 20){
+                recentTrades.add(t);
+                f++;
+            }else {
+                break;
+            }
+        }
+        model.addAttribute("trades",recentTrades);
+        return "apirecentcensored";
+    }
     public void savePols(){
         politicianDAO.saveAll(api.getPoliticians());
     }

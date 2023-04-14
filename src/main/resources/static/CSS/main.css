@@ -176,7 +176,9 @@ body {
     height: 10%;
     overflow: hidden;
 }
-
+.blur{
+    filter:  grayscale(1) blur(10px);
+}
 @keyframes waves {
     0% {
         transform: translate(0%);
