@@ -1,0 +1,185 @@
+@font-face {
+    font-family: lexend;
+    src: url(Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
+}
+* {
+    font-family: "lexend", "Tahoma", sans-serif;
+}
+body {
+    background-image: url("cow.jpeg");
+    background-size: cover;
+}
+.card {
+    z-index: 5;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    perspective: 33px;
+    perspective-origin: 50% 50%;
+    width: 100%;
+    height: 100%;
+    transition: all 0.75s ease;
+}
+.card::before {
+    content: "";
+    background-image: url("milk.webp");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.25;
+}
+
+.img {
+    background-image: url("https://a.storyblok.com/f/158613/450x550/f77d40b8e2/e000285.jpg/m/225x225/smart/filters:quality(90)");
+    filter: grayscale(1);
+    background-size: contain;
+    display: inline-block;
+    border: solid 1px #eee;
+    aspect-ratio: 1 / 1;
+    width: 5em;
+    border-radius: 0.1em;
+}
+.name {
+    margin-left: 0.5em;
+    font-size: 2em;
+    font-weight: 100;
+    display: inline-block;
+}
+
+.card-hr {
+    width: 90%;
+    border-top: solid 1px #4d4d4d9d;
+    margin-top: 1em;
+}
+.card-top {
+    margin-left: 4em;
+    margin-top: 11em;
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+}
+.card-bot {
+    width: 100%;
+    height: 10em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.card-bot-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    display: flex;
+    width: 90%;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+.date {
+    font-family: "Courier New", Courier, monospace;
+
+    margin: 2em 3em 0 auto;
+}
+.ticker {
+    color: #00ff59;
+    font-size: 4em;
+    font-weight: lighter;
+}
+
+.card-container {
+    position: relative;
+    width: 29em;
+    height: 33em;
+}
+
+.fake-carton-container {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.fcc-1 {
+    position: absolute;
+    width: 96%;
+    left: 2%;
+    height: 60%;
+    bottom: 2%;
+    backdrop-filter: blur(10px);
+}
+.fcc-2 {
+    transform: perspective(19px) rotateX(1deg);
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    height: 24%;
+    bottom: 62%;
+    backdrop-filter: blur(10px);
+}
+.fcc-3 {
+    transform: perspective(40px) rotateX(1deg);
+    position: absolute;
+    width: 83%;
+    left: 8.5%;
+    height: 13%;
+    bottom: 85.3%;
+    backdrop-filter: blur(10px);
+}
+.milk-container {
+    z-index: 2;
+    position: absolute;
+    bottom: 4%;
+    width: 100%;
+    height: 00%;
+    transition: all 1s ease;
+}
+.milk {
+    position: absolute;
+    width: 92%;
+    left: 4%;
+    height: 58%;
+    bottom: 0%;
+    background-color: #eee;
+    border-radius: 0 0 1em 1em;
+}
+.milk-wave {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    width: 200%;
+    height: 100%;
+    background: url("waves.png") repeat-x;
+    background-size: contain;
+
+    transform: translate(0);
+}
+
+.card-container:hover .milk-container {
+    height: 100%;
+}
+.card-container:hover .milk-wave {
+    animation: waves 2s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+.wave-clip {
+    position: absolute;
+    bottom: 58%;
+    left: 4%;
+    width: 92%;
+    height: 10%;
+    overflow: hidden;
+}
+
+@keyframes waves {
+    0% {
+        transform: translate(0%);
+    }
+    100% {
+        transform: translate(-50%);
+    }
+}
