@@ -6,8 +6,10 @@
     font-family: "lexend", "Tahoma", sans-serif;
 }
 body {
-    background-image: url("cow.jpeg");
-    background-size: cover;
+    background-image: url("cow.webp");
+
+    /*background-size: 10em;*/
+    /*background-repeat: repeat;*/
 }
 .card {
     z-index: 5;
