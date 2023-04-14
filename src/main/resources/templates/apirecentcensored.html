@@ -16,10 +16,10 @@
         <div class="fcc-3"></div>
       </div>
       <div class="card">
-        <div class="date" th:text="${trade.getDate()}"></div>
+        <div class="date blur" th:text="${trade.getDate()}"></div>
         <div class="card-top">
-          <img class="img" th:src="${trade.getPolitician().getImageURL()}">
-          <div class="name" th:text="${trade.getPolitician().name}"></div>
+          <img class="img blur" th:src="${trade.getPolitician().getImageURL()}">
+          <div class="name blur" th:text="${trade.getPolitician().name}"></div>
         </div>
         <div class="card-hr"></div>
         <div class="card-bot">
@@ -28,7 +28,6 @@
             <div class="range" th:text="${trade.getRange()}"></div>
             <div class="type" th:text="${trade.getTransactionType()}"></div>
           </div>
-          <!-- <div class="body">This is the body</div> -->
         </div>
       </div>
       <div class="milk-container">
@@ -41,17 +40,5 @@
     </div>
   </div>
 </div>
-<!--<div th:each="pol : ${pols}">-->
-<!--    <img th:src="${pol.getImageURL()}">-->
-
-<!--    <p th:text="${pol.name}" />-->
-<!--    <div th:each="trade : ${pol.getTrades()}">-->
-<!--        <span th:text="${trade.getTicker()}" />-->
-<!--        <span th:text="${trade.getDate()}" />-->
-<!--        <span th:text="${trade.getTransactionType()}" />-->
-<!--        <span th:text="${trade.getRange()}" />-->
-<!--    </div>-->
-<!--    -->
-<!--</div>-->
 </body>
 </html>

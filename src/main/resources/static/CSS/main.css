@@ -6,8 +6,10 @@
     font-family: "lexend", "Tahoma", sans-serif;
 }
 body {
-    background-image: url("cow.jpeg");
-    background-size: cover;
+    background-image: url("cow.webp");
+
+    /*background-size: 10em;*/
+    /*background-repeat: repeat;*/
 }
 .card {
     z-index: 5;
@@ -22,8 +24,8 @@ body {
     height: 100%;
     transition: all 0.75s ease;
 }
-.card::before {
-    content: "";
+.carton{
+    z-index: 3;
     background-image: url("milk.webp");
     background-size: cover;
     position: absolute;
@@ -132,7 +134,7 @@ body {
     backdrop-filter: blur(10px);
 }
 .milk-container {
-    z-index: 2;
+    z-index: 4;
     position: absolute;
     bottom: 4%;
     width: 100%;
@@ -143,7 +145,7 @@ body {
     position: absolute;
     width: 92%;
     left: 4%;
-    height: 58%;
+    height: 50%;
     bottom: 0%;
     background-color: #eee;
     border-radius: 0 0 1em 1em;
@@ -168,13 +170,15 @@ body {
 }
 .wave-clip {
     position: absolute;
-    bottom: 58%;
+    bottom: 50%;
     left: 4%;
     width: 92%;
     height: 10%;
     overflow: hidden;
 }
-
+.blur{
+    filter:  grayscale(1) blur(10px);
+}
 @keyframes waves {
     0% {
         transform: translate(0%);
