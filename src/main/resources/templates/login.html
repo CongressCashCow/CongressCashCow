@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <script th:replace="partials/partials :: bootstrap"></script>
+    <script th:replace="~{partials/partials :: bootstrap}"></script>
     <link rel="stylesheet" href="/CSS/views/login_register.css">
     <meta charset="UTF-8" />
     <title>Login</title>
 </head>
 <body>
-<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<nav th:replace="~{partials/partials :: navbar}"></nav>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -17,24 +17,25 @@
                     <h3 class="card-title text-center mb-4">Login to your account</h3>
                     <form th:action="@{/login}" method="POST">
                         <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                         <hr>
-                        <p class="text-center">Don't have an account? <a href="/register">Register!</a></p>
+
                     </form>
+                    <p class="text-center">Don't have an account? <a href="/register">Register!</a></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<footer th:replace="partials/partials :: footer"></footer>
-<script th:replace="partials/partials :: bootstrap-footer"></script>
+<footer th:replace="~{partials/partials :: footer}"></footer>
+<script th:replace="~{partials/partials :: bootstrap-footer}"></script>
 </body>
 </html>

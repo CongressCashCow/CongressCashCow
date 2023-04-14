@@ -7,12 +7,20 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class User {
+
+    public User(User copy){
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+        politicians = copy.politicians;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false, length = 50)
     private String username;
-    @Column(nullable = false, length = 60)
+    @Column(nullable = false, length = 60 )
     private String email;
     @Column(nullable = false)
     private String password;
