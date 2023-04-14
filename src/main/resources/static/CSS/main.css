@@ -143,7 +143,7 @@ body {
     position: absolute;
     width: 92%;
     left: 4%;
-    height: 58%;
+    height: 50%;
     bottom: 0%;
     background-color: #eee;
     border-radius: 0 0 1em 1em;
@@ -168,7 +168,7 @@ body {
 }
 .wave-clip {
     position: absolute;
-    bottom: 58%;
+    bottom: 50%;
     left: 4%;
     width: 92%;
     height: 10%;

@@ -22,10 +22,8 @@ import java.util.concurrent.TimeUnit;
 public class APIService {
     @Value("${apiKey}")
     private String apiKey;
-
     @Autowired
     public APIService(){}
-
     private Date updatedDate = new Date();
     private Set<Politician> politicians = new HashSet<Politician>();
     private   List<Trade> trades = new ArrayList<>();
@@ -38,19 +36,6 @@ public class APIService {
                 .asString();
 
         return response.getBody();
-    }
-
-    int r = 0;
-    private  void verification() throws InterruptedException {
-        while (r < 100) {
-            System.out.println("running");
-            TimeUnit.SECONDS.sleep(10);
-
-            System.out.println(politicianIdKeeper.get(200L));
-            System.out.println(politicians.size());
-            System.out.println(trades.size());
-            r++;
-        }
     }
 
     @PostConstruct
