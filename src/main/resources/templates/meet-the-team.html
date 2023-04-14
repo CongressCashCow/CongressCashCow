@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script th:replace="partials/partials :: bootstrap"></script>
+    <link rel="stylesheet" href="/CSS/views/meet-the-team.css">
+    <meta charset="UTF-8">
+    <title>Meet the team</title>
+</head>
+<body>
+<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<div class="about-section">
+    <h1>About Us Page</h1>
+    <p>Some text about who we are and what we do.</p>
+    <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
+
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <img src="/images/jona.png" alt="Jona" style="width:100%">
+            <div class="container">
+                <h2>Jona Gonzalez</h2>
+                <p class="title">Something here</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>jane@example.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="/images/will.png" alt="Will" style="width:100%">
+            <div class="container">
+                <h2>Will Parry</h2>
+                <p class="title">Something here</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>mike@example.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="/images/jeff.png" alt="Jeff" style="width:100%">
+            <div class="container">
+                <h2>Jeff Bezos</h2>
+                <p class="title">Something Here</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>john@example.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <img src="/images/nando.png" alt="Nando" style="width:100%">
+            <div class="container">
+                <h2>Fernando Rivera</h2>
+                <p class="title">Something Here</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p>john@example.com</p>
+                <p><button class="button">Contact</button></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="partials/partials :: footer"></footer>
+<script th:replace="partials/partials :: bootstrap-footer"></script>
+</body>
+</html>

@@ -20,13 +20,13 @@
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="/about">About</a>
             </li>
             <li class="nav-item" th:if="${isAuthenticated}">
                 <a class="nav-link" href="#" th:action="@{/index-visitor}" th:method="get">Trades</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Meet the Team</a>
+                <a class="nav-link" href="/meet-the-team">Meet the Team</a>
             </li>
             <li class="nav-item" th:unless="${isAuthenticated}">
                 <a class="nav-link" href="#" th:action="@{/login}" th:method="get">Login</a>
