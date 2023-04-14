@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index User</title>
+    <script th:replace="partials/partials :: bootstrap"></script>
 
 </head>
 <body>
@@ -20,8 +21,8 @@
 <!-- Politician Specific Page -->
 <h2>Politician Trading History: [Politician Name]</h2>
 <p>Here, you can view a detailed breakdown of [Politician Name]'s trading history.</p>
-<button>Favorite</button> <!-- Add favorite button -->
-<button>Unfavorite</button> <!-- Remove favorite button -->
+<button>Follow</button> <!-- Add favorite button -->
+<button>Unfollow</button> <!-- Remove favorite button -->
 
 <!-- Profile Page -->
 <h2>My Profile</h2>
