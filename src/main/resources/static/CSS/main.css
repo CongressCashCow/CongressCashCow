@@ -24,8 +24,8 @@ body {
     height: 100%;
     transition: all 0.75s ease;
 }
-.card::before {
-    content: "";
+.carton{
+    z-index: 3;
     background-image: url("milk.webp");
     background-size: cover;
     position: absolute;
@@ -134,7 +134,7 @@ body {
     backdrop-filter: blur(10px);
 }
 .milk-container {
-    z-index: 2;
+    z-index: 4;
     position: absolute;
     bottom: 4%;
     width: 100%;
