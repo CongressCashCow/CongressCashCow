@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <script th:replace="partials/partials :: bootstrap"></script>
+    <script th:replace="~{partials/partials :: bootstrap}"></script>
     <meta charset="UTF-8" />
     <title>Home</title>
 </head>
 <body>
-<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<nav th:replace="~{partials/partials :: navbar}"></nav>
 
 <h1>This is the home page</h1>
 
 
-<footer th:replace="partials/partials :: footer"></footer>
-<script th:replace="partials/partials :: bootstrap-footer"></script>
+<footer th:replace="~{partials/partials :: footer}"></footer>
+<script th:replace="~{partials/partials :: bootstrap-footer}"></script>
 </body>
 </html>
