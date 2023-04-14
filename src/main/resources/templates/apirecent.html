@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+  <link rel="stylesheet" href="/CSS/main.css">
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>API Recent</title>
 </head>
 <body>
-$END$
+<h1>Top 20</h1>
+<div class="container">
+  <div th:each="trade : ${trades}">
+    <div class="card-container">
+      <div class="fake-carton-container">
+        <div class="fcc-1"></div>
+        <div class="fcc-2"></div>
+        <div class="fcc-3"></div>
+      </div>
+      <div class="card">
+        <div class="date" th:text="${trade.getDate()}"></div>
+        <div class="card-top">
+          <img class="img" th:src="${trade.getPolitician().getImageURL()}">
+          <div class="name" th:text="${trade.getPolitician().name}"></div>
+        </div>
+        <div class="card-hr"></div>
+        <div class="card-bot">
+          <div class="ticker" th:text="${trade.getTicker()}"></div>
+          <div class="card-bot-right">
+            <div class="range" th:text="${trade.getRange()}"></div>
+            <div class="type" th:text="${trade.getTransactionType()}"></div>
+          </div>
+          <!-- <div class="body">This is the body</div> -->
+        </div>
+      </div>
+      <div class="milk-container">
+        <div class="wave-clip">
+          <div class="milk-wave"></div>
+        </div>
+        <div class="milk"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div th:each="pol : ${pols}">-->
+<!--    <img th:src="${pol.getImageURL()}">-->
+
+<!--    <p th:text="${pol.name}" />-->
+<!--    <div th:each="trade : ${pol.getTrades()}">-->
+<!--        <span th:text="${trade.getTicker()}" />-->
+<!--        <span th:text="${trade.getDate()}" />-->
+<!--        <span th:text="${trade.getTransactionType()}" />-->
+<!--        <span th:text="${trade.getRange()}" />-->
+<!--    </div>-->
+<!--    -->
+<!--</div>-->
 </body>
 </html>

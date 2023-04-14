@@ -6,6 +6,7 @@ import com.milkmoney.models.Politician;
 import com.milkmoney.models.Trade;
 
 import com.milkmoney.utils.PolImg;
+import jakarta.annotation.PostConstruct;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -26,7 +28,7 @@ public class APIService {
 
     private Date updatedDate = new Date();
     private Set<Politician> politicians = new HashSet<Politician>();
-    private   Set<Trade> trades = new HashSet<Trade>();
+    private   List<Trade> trades = new ArrayList<>();
     private HashMap<Long, String> politicianIdKeeper = new HashMap<Long, String>(); //sims db; rm after db
     private String getData(){
         HttpResponse<String> response = Unirest.get("https://api.quiverquant.com/beta/bulk/congresstrading")
@@ -51,6 +53,7 @@ public class APIService {
         }
     }
 
+    @PostConstruct
     public  void update(){
         trades.clear();
 
@@ -88,20 +91,28 @@ public class APIService {
                 trade.setId(tradeId);
                 trade.setRange(range);
                 trade.setTicker(ticker);
-                trade.setDate(date);
+                LocalDate formattedDate = LocalDate.parse(date);
+                trade.setDate(formattedDate);
                 trade.setTransactionType(type);
                 trade.setPolitician(p);
                 trades.add(trade);
                 p.addTrade(trade);
                 tradeId++;
             }
-
+            updateImageURLs();
+            sortTrades();
         }
 
         catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    private void sortTrades(){
+        Collections.sort(trades);
+        Collections.reverse(trades);
+    }
+
     public  void updateImageURLs(){
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -114,6 +125,7 @@ public class APIService {
                     }
                 }
             }
+//            save
         }
         catch (Exception e){
             System.out.println(e);
@@ -132,11 +144,11 @@ public class APIService {
         politicians.add(politician);
     }
 
-    public  Set<Trade> getTrades() {
+    public  List<Trade> getTrades() {
         return trades;
     }
 
-    public  void setTrades(Set<Trade> tradez) {
+    public  void setTrades(List<Trade> tradez) {
         trades = tradez;
     }
 
