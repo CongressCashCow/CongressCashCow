@@ -46,12 +46,12 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(
-                        "/politician-profile", "/user-profile", "/index-user"
+                        "/politician-profile", "/user-profile", "/index-user", "api"
                 )
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers( "/register", "/meet-the-team", "/login", "/index-visitor", "/about", "/CSS/**", "/templates/**") // anyone can see home, the ads pages, and sign up
+                .requestMatchers( "/register", "/meet-the-team", "/login", "/index-visitor", "/about", "/CSS/**", "/templates/**", "/images/**") // anyone can see home, the ads pages, and sign up
                 .permitAll()
                 /* Pages that require authentication */
 
