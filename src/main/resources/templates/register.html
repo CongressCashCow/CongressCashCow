@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <title>Register</title>
-    <link th:replace="partials/partials :: bootstrap">
+    <link th:replace="~{partials/partials :: bootstrap}">
     <link rel="stylesheet" href="/static/CSS/partials/navbar-user.css">
     <link rel="stylesheet" href="/CSS/views/login_register.css">
 </head>
 <body>
-<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<nav th:replace="~{partials/partials :: navbar}"></nav>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -41,7 +41,7 @@
 
 
 
-<footer th:replace="partials/partials :: footer"></footer>
-<script th:replace="partials/partials :: bootstrap-footer"></script>
+<footer th:replace="~{partials/partials :: footer}"></footer>
+<script th:replace="~{partials/partials :: bootstrap-footer}"></script>
 </body>
 </html>
