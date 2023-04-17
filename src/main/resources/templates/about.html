@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:replace="partials/partials :: bootstrap"></link>
+
 </head>
 <body>
-This is the about page
+<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<div class="vh-100">
+    <h1>This is the about page</h1>
+</div>
+
+<footer th:replace="partials/partials :: footer"></footer>
+<script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>
 </html>

@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8"/>
-=======
-    <script th:replace="~{partials/partials :: bootstrap}"></script>
-    <meta charset="UTF-8" />
->>>>>>> main
     <title>Home</title>
     <link th:replace="partials/partials :: bootstrap"></link>
 </head>
 <body>
-<<<<<<< HEAD
 <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
 <div class="container vh-100">
     <div class="row d-flex justify-content-center">
@@ -26,21 +20,12 @@
                 <h5 class="card-title">Ticker Code</h5>
                 <p class="card-text">Transaction Date</p>
                 <p class="card-text">Transaction Range Amount</p>
-                <a href="#" class="btn btn-primary">View More</a>
+                <a href="/index-user" class="btn btn-primary">View More</a>
             </div>
         </div>
     </div>
 </div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
-=======
-<nav th:replace="~{partials/partials :: navbar}"></nav>
-
-<h1>This is the home page</h1>
-
-
-<footer th:replace="~{partials/partials :: footer}"></footer>
-<script th:replace="~{partials/partials :: bootstrap-footer}"></script>
->>>>>>> main
 </body>
 </html>
