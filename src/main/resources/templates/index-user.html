@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-
-<html lang="en">
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<script th:replace="~{partials/partials :: bootstrap}"></script>
-<!--    <link rel="stylesheet" href="/CSS/views/index-user.css">-->
+    <script th:replace="~{partials/partials :: bootstrap}"></script>
+    <!--    <link rel="stylesheet" href="/CSS/views/index-user.css">-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index User</title>
@@ -14,33 +11,39 @@
 </head>
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
-<p>As a user, you can view the homepage without limited/censored information.</p>
-<p>As a user, you can click on politician cards and be directed to a specific page for each politician which shows a
-    detailed breakdown of their trading history.</p>
-<p>As a user, you can search for a politician by name.</p>
+<div class="container vh-100">
+    <!-- Politician Specific Page -->
+    <div>
+        <div class="card text-center" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="Avatar Politician Photo">
+            <div class="card-body">
+                <h5 class="card-title">Ticker Code</h5>
+                <p class="card-text">Transaction Date</p>
+                <p class="card-text">Transaction Range Amount</p>
+                <a href="/politician-profile" class="btn btn-primary">View Politician Profile</a>
+            </div>
+        </div>
 
-<!-- Politician Specific Page -->
-<h2>Politician Trading History: [Politician Name]</h2>
-<p>Here, you can view a detailed breakdown of [Politician Name]'s trading history.</p>
-<button>Follow</button> <!-- Add favorite button -->
-<button>Unfollow</button> <!-- Remove favorite button -->
+        <!-- Profile Page -->
+        <h2>My Profile</h2>
+        <p>Here, you can view your profile details and your favorite politicians.</p>
+        <ul>
+            <li>Username: [Username]</li>
+            <li>Email: [Email Address]</li>
+            <li>Favorite Politicians:</li>
+        </ul>
+        <ul>
+            <li>[Politician Name]</li> <!-- Favorite politician list -->
+            <li>[Politician Name]</li>
+            <li>[Politician Name]</li>
 
-<!-- Profile Page -->
-<h2>My Profile</h2>
-<p>Here, you can view your profile details and your favorite politicians.</p>
-<ul>
-    <li>Username: [Username]</li>
-    <li>Email: [Email Address]</li>
-    <li>Favorite Politicians:</li>
-    </ul>
-<ul>
-        <li>[Politician Name]</li> <!-- Favorite politician list -->
-        <li>[Politician Name]</li>
-        <li>[Politician Name]</li>
-
-</ul>
-<button>Remove Favorite</button> <!-- Remove favorite politician button -->
-<button>Update Account</button> <!-- Update account details button -->
-<button>Delete Account</button> <!-- Delete account button -->
+        </ul>
+        <button>Remove Favorite</button> <!-- Remove favorite politician button -->
+        <button>Update Account</button> <!-- Update account details button -->
+        <button>Delete Account</button> <!-- Delete account button -->
+    </div>
+</div>
+    <footer th:replace="partials/partials :: footer"></footer>
+    <script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>
 </html>
