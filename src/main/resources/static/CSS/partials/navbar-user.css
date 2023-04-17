@@ -1,10 +1,9 @@
 
 .navbar {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-}
-
-.navbar {
+    overflow: hidden;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
 }
@@ -34,7 +33,7 @@
 }
 
 .navbar-toggler-icon {
-    background-image: url("your-toggle-icon.png");
+    /*background-image: url();*/
 }
 
 @media (max-width: 768px) {

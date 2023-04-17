@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <title>Politician Profile</title>
     <link rel="stylesheet" href="/static/CSS/main.css">
     <link th:replace="partials/partials :: bootstrap">
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
 
 <div class="page-wrapper container-fluid d-flex justify-content-center">
     <div class="container mb3">
-        <div class="row">
-            <div class="column text-center">
+        <div class="row content-center">
+            <div class="column d-flex justify-content-center">
                 <h1>Politician Name</h1>
                 <p>Transaction Type</p>
                 <p>Amount</p>
@@ -28,3 +28,5 @@
         </div>
     </div>
 </div>
+<footer th:replace="partials/partials :: footer"></footer>
+<script th:replace="partials/partials :: bootstrap-footer"></script>
