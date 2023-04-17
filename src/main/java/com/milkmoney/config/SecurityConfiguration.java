@@ -36,7 +36,7 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/index-user") // user's home page, it can be any URL
+                .defaultSuccessUrl("/user-profile") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -45,8 +45,7 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers(
-                        "/politician-profile", "/user-profile", "/index-user", "/api", "/api/recent","/api/recent/censored", "/update"
+                .requestMatchers("/politician-profile", "/user-profile", "/index-user", "/api", "/api/recent","/api/recent/censored", "/update"
                 )
                 .authenticated()
                 .and()
@@ -58,5 +57,12 @@ public class SecurityConfiguration {
         ;
         return http.build();
     }
-
+//@Bean
+//SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+//    http.authorizeHttpRequests()
+//            .anyRequest().permitAll()
+//            .and().formLogin()
+//            .and().httpBasic();
+//    return http.build();
+//}
 }
