@@ -45,12 +45,13 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/politician-profile", "/user-profile", "/index-user", "/api", "/api/recent","/api/recent/censored", "/update"
-                )
+                
+                .requestMatchers("/politician-profile", "/user-profile", "/index-user", "/api", "/api/recent","/api/recent/censored", "/update")
+
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers( "/register", "/meet-the-team", "/login", "/index-visitor", "/about", "/CSS/**", "/templates/**", "/images/**", "/api/recent", "/api/recent/censored", "/") // anyone can see home, the ads pages, and sign up
+                .requestMatchers( "/register", "/meet-the-team", "/login", "/index-visitor", "/about", "/CSS/**", "/templates/**", "/images/**", "/api", "/api/recent", "/api/recent/censored", "/") // anyone can see home, the ads pages, and sign up
                 .permitAll()
 
 

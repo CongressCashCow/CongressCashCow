@@ -51,7 +51,7 @@ public class APIService {
                     new TypeReference<ArrayList<Object>>(){});
 
             long tradeId = trades.size();
-//            System.out.printf("number : %d", unformattedObjs.size());
+
             for(Object obj : unformattedObjs){
                 String ticker = obj.toString().substring(obj.toString().indexOf("Ticker=") + 7,obj.toString().indexOf(", Rep"));
                 String rep = obj.toString().substring(obj.toString().indexOf("Representative=") + 15,obj.toString().indexOf(", Transaction="));
@@ -161,6 +161,21 @@ public class APIService {
 
     public  Date getUpdatedDate() {
         return updatedDate;
+    }
+    public List<Trade> getPoliticianTrades(Politician p){
+            return getPoliticianTrades(p.getName());
+    }
+    public List<Trade> getPoliticianTrades(String name){
+
+            Politician p = null;
+            for (Politician pol : politicians) {
+                if (pol.getName().equals(name)) {
+                    p = pol;
+                    break;
+                }
+            }
+            return p.getTrades();
+
     }
 
 }
