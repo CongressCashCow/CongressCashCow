@@ -1,4 +1,5 @@
 package com.milkmoney.config;
+
 import com.milkmoney.Services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,7 +52,7 @@ public class SecurityConfiguration {
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers( "/register", "/meet-the-team", "/login", "/index-visitor", "/about", "/CSS/**", "/templates/**", "/images/**", "/api/recent", "/api/recent/censored", "/") // anyone can see home, the ads pages, and sign up
+                .requestMatchers("/register", "/meet-the-team", "/login", "/index-visitor", "/about", "/CSS/**", "/templates/**", "/images/**", "/api/recent", "/api/recent/censored", "/", "/update") // anyone can see home, the ads pages, and sign up
                 .permitAll()
 
 
