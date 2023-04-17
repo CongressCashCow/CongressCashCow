@@ -51,7 +51,7 @@ public class APIService {
                     new TypeReference<ArrayList<Object>>(){});
 
             long tradeId = trades.size();
-//            System.out.printf("number : %d", unformattedObjs.size());
+
             for(Object obj : unformattedObjs){
                 String ticker = obj.toString().substring(obj.toString().indexOf("Ticker=") + 7,obj.toString().indexOf(", Rep"));
                 String rep = obj.toString().substring(obj.toString().indexOf("Representative=") + 15,obj.toString().indexOf(", Transaction="));

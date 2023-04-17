@@ -7,6 +7,7 @@ import com.milkmoney.models.Politician;
 import com.milkmoney.models.Trade;
 import com.milkmoney.models.User;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +34,6 @@ public class PoliticianController {
 
     @GetMapping("/update")
     public String update(){
-//        api.update();
-//        api.updateImageURLs();
         savePols();
         return "redirect:/api";
     }
@@ -44,61 +43,79 @@ public class PoliticianController {
         model.addAttribute("pols",pols);
         return "api";
     }
+//    public String showProfilePage(Authentication authentication, Model model) {
+//        if (authentication != null && authentication.isAuthenticated()) {
+//            // User is authenticated, add user details to the model and return the name of the profile view
+//            User user = (User) authentication.getPrincipal();
+//            model.addAttribute("username", user.getUsername());
+//            model.addAttribute("email", user.getEmail());
+//            return "profile";
+//        } else {
+//            // User is not authenticated, redirect to the login page
+//            return "redirect:/login";
+//        }
+//    }
     @GetMapping("/api/recent")
-    public String apiRecent(Model model) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User fixedUser = userDAO.findById(currentUser.getId()).get();
-        List<Trade> trades = api.getTrades();
+    public String apiRecent(Authentication authentication, Model model) {
         List<Trade> recentTrades = new ArrayList<>();
-        List<String> names = new ArrayList<>();
-        int f = 0;
+        List<Trade> trades = api.getTrades();
         List<String> tradeNames = new ArrayList<>();
-        for(Trade t : trades){
-            if(f < 20){
-                if( !tradeNames.contains(t.getPolitician().getName())){
+        int f = 0;
+//        if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
+//            System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass());
+        if (authentication != null && authentication.isAuthenticated()) {
+            // User is authenticated, add user details to the model and return the name of the profile view
+//            User user = (User) authentication.getPrincipal();
+//            System.out.println("logged in");
+
+            User currentUser = (User) authentication.getPrincipal();
+            User fixedUser = userDAO.findByUsername(currentUser.getUsername());
+
+            List<String> names = new ArrayList<>();
+
+            for (Politician p : fixedUser.getPoliticians()) {
+                names.add(p.getName());
+            }
+            model.addAttribute("names",names);
+        } else {
+            System.out.println("logged out");
+        }
+
+        for (Trade t : trades) {
+            if (f < 20) {
+                if (!tradeNames.contains(t.getPolitician().getName())) {
                     recentTrades.add(t);
                     tradeNames.add(t.getPolitician().getName());
                     f++;
                 }
-            }else {
+            } else {
                 break;
             }
         }
-        for(Politician p : fixedUser.getPoliticians()){
-            names.add(p.getName());
-        }
         model.addAttribute("trades",recentTrades);
-        model.addAttribute("names",names);
+
         return "apirecent";
     }
     @PostMapping("/api/recent")
     public String addFavorite(@RequestParam("pol_id") String name,@RequestParam("follow-btn") boolean follow) {
 
-//        System.out.println(model.getAttribute("tester"));
-        System.out.println(follow);
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User fixedUser = userDAO.findById(currentUser.getId()).get();
         boolean isPresent = false;
         if(follow){
-        for(Politician p : fixedUser.getPoliticians()){
-            if(p.getName().equals(name)){
-                isPresent = true;
-                break;
+            for(Politician p : fixedUser.getPoliticians()){
+                if(p.getName().equals(name)){
+                    isPresent = true;
+                    break;
+                }
             }
-        }
-        if(!isPresent){
-            fixedUser.addPolitician(politicianDAO.findByName(name));
-            userDAO.save(fixedUser);
-        }
+            if(!isPresent){
+                fixedUser.addPolitician(politicianDAO.findByName(name));
+                userDAO.save(fixedUser);
+            }
         }else{
             fixedUser.removePolitician(politicianDAO.findByName(name));
             userDAO.save(fixedUser);
-        }
-
-        System.out.println(fixedUser.getId());
-        System.out.printf("size %d%n",fixedUser.getPoliticians().size());
-        for(Politician p : fixedUser.getPoliticians()){
-            System.out.println(p.getName());
         }
 
         return "redirect:/api/recent";
