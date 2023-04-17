@@ -13,7 +13,6 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
-        politicians = copy.politicians;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
