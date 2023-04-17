@@ -162,5 +162,20 @@ public class APIService {
     public  Date getUpdatedDate() {
         return updatedDate;
     }
+    public List<Trade> getPoliticianTrades(Politician p){
+            return getPoliticianTrades(p.getName());
+    }
+    public List<Trade> getPoliticianTrades(String name){
+
+            Politician p = null;
+            for (Politician pol : politicians) {
+                if (pol.getName().equals(name)) {
+                    p = pol;
+                    break;
+                }
+            }
+            return p.getTrades();
+
+    }
 
 }
