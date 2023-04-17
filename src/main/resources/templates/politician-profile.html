@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <title>Politician Profile</title>
     <link rel="stylesheet" href="/static/CSS/main.css">
     <link th:replace="partials/partials :: bootstrap">
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
 
 <div class="page-wrapper container-fluid d-flex justify-content-center">
     <div class="container mb3">
