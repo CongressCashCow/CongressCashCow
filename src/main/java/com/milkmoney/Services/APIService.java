@@ -27,7 +27,7 @@ public class APIService {
     private Date updatedDate = new Date();
     private Set<Politician> politicians = new HashSet<Politician>();
     private   List<Trade> trades = new ArrayList<>();
-    private HashMap<Long, String> politicianIdKeeper = new HashMap<Long, String>(); //sims db; rm after db
+
     private String getData(){
         HttpResponse<String> response = Unirest.get("https://api.quiverquant.com/beta/bulk/congresstrading")
                 .header("accept", "application/json")
@@ -40,6 +40,8 @@ public class APIService {
 
     @PostConstruct
     public  void update(){
+        List<PolImg> imageList = getImageList();
+        System.out.printf("LIST LENGTH %d  ", imageList.size());
         trades.clear();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -48,29 +50,34 @@ public class APIService {
             ArrayList<Object> unformattedObjs = mapper.readValue(getData(),
                     new TypeReference<ArrayList<Object>>(){});
 
-            long id = politicianIdKeeper.size();
             long tradeId = trades.size();
+//            System.out.printf("number : %d", unformattedObjs.size());
             for(Object obj : unformattedObjs){
                 String ticker = obj.toString().substring(obj.toString().indexOf("Ticker=") + 7,obj.toString().indexOf(", Rep"));
                 String rep = obj.toString().substring(obj.toString().indexOf("Representative=") + 15,obj.toString().indexOf(", Transaction="));
                 String date = obj.toString().substring(obj.toString().indexOf("nDate=") + 6,obj.toString().indexOf(", Tic"));
                 String type = obj.toString().substring(obj.toString().indexOf("Transaction=") + 12,obj.toString().indexOf(", Am"));
                 String range = obj.toString().substring(obj.toString().indexOf("Range=") + 6,obj.toString().indexOf("}"));
+                boolean isAdded = false;
                 Politician p = null;
-                if(!politicianIdKeeper.containsValue(rep)){
-                    p = new Politician();
-                    p.setId(id);
-                    p.setName(rep);
-                    politicians.add(p);
-                    politicianIdKeeper.put(id,rep);
 
-                    id++;
-                }else{
-                    for(Politician pol : politicians){
-                        if(pol.getName().equals(rep)){
-                            p = pol;
+
+                for(Politician pol : politicians){
+                    if(pol.getName().equals(rep)){
+                        p = pol;
+                        isAdded = true;
+                    }
+                }
+                if(!isAdded){
+                    p = new Politician();
+                    p.setName(rep);
+                    for(PolImg polimg : imageList){
+                        if(polimg.getName().equals(rep.toLowerCase())){
+                            p.setImageURL(polimg.getImage());
+                            break;
                         }
                     }
+                    politicians.add(p);
                 }
                 Trade trade = new Trade();
                 trade.setId(tradeId);
@@ -84,7 +91,8 @@ public class APIService {
                 p.addTrade(trade);
                 tradeId++;
             }
-            updateImageURLs();
+//            updateImageURLs();
+            System.out.printf("number : %d", politicians.size());
             sortTrades();
         }
 
@@ -98,10 +106,24 @@ public class APIService {
         Collections.reverse(trades);
     }
 
+    private List<PolImg> getImageList(){
+        List<PolImg> listPol = new ArrayList<>();
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            listPol = mapper.readValue(new File("src/main/resources/static/images.json"), new TypeReference<List<PolImg>>(){});
+
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return listPol;
+    }
+
     public  void updateImageURLs(){
         try {
             ObjectMapper mapper = new ObjectMapper();
             List<PolImg> listPol = mapper.readValue(new File("src/main/resources/static/images.json"), new TypeReference<List<PolImg>>(){});
+
             for (PolImg pig : listPol) {
 
                 for(Politician p : politicians){

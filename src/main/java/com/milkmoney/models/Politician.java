@@ -9,11 +9,12 @@ import jakarta.persistence.*;
 @Table(name ="politicians")
 public class Politician {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+//    @Id
+//    @Column
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private long id;
 
-    @Column(nullable = false)
+    @Id
     private String name;
 
     @Column
@@ -33,13 +34,13 @@ public class Politician {
         this.trades = trades;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;
