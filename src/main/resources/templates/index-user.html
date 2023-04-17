@@ -1,12 +1,15 @@
-
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">>
+
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <script th:replace="~{partials/partials :: bootstrap}"></script>
 <!--    <link rel="stylesheet" href="/CSS/views/index-user.css">-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index User</title>
+    <script th:replace="partials/partials :: bootstrap"></script>
 
 </head>
 <body>
@@ -19,8 +22,8 @@
 <!-- Politician Specific Page -->
 <h2>Politician Trading History: [Politician Name]</h2>
 <p>Here, you can view a detailed breakdown of [Politician Name]'s trading history.</p>
-<button>Favorite</button> <!-- Add favorite button -->
-<button>Unfavorite</button> <!-- Remove favorite button -->
+<button>Follow</button> <!-- Add favorite button -->
+<button>Unfollow</button> <!-- Remove favorite button -->
 
 <!-- Profile Page -->
 <h2>My Profile</h2>
