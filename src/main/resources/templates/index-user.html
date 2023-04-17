@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <html lang="en">
+=======
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">>
+>>>>>>> main
 <head>
+<script th:replace="~{partials/partials :: bootstrap}"></script>
+<!--    <link rel="stylesheet" href="/CSS/views/index-user.css">-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index User</title>
@@ -10,9 +18,7 @@
 
 </head>
 <body>
-<nav th:replace="partials/navbar :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
-
-<!-- Homepage -->
+<nav th:replace="~{partials/partials :: navbar}"></nav>
 <p>As a user, you can view the homepage without limited/censored information.</p>
 <p>As a user, you can click on politician cards and be directed to a specific page for each politician which shows a
     detailed breakdown of their trading history.</p>

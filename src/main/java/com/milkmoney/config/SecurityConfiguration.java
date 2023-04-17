@@ -1,4 +1,5 @@
 package com.milkmoney.config;
+import com.milkmoney.Services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,11 +14,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-//    private UserDetailsLoader usersLoader;
-//
-//    public SecurityConfiguration(UserDetailsLoader usersLoader) {
-//        this.usersLoader = usersLoader;
-//    }
+    private UserDetailsLoader usersLoader;
+
+    public SecurityConfiguration(UserDetailsLoader usersLoader) {
+        this.usersLoader = usersLoader;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -35,7 +36,7 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/index-visitor") // user's home page, it can be any URL
+                .defaultSuccessUrl("/index-user") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -44,21 +45,16 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/index-visitor", "/register", "/login", "/css/**", "/js/**") // anyone can see home, the ads pages, and sign up
-                .permitAll()
-                /* Pages that require authentication */
-                .and()
-                .authorizeHttpRequests()
                 .requestMatchers(
-                        "/index-user", // only authenticated users can create ads
-                        "politician-profile", // only authenticated users can edit ads
-                        "user-profile"
+                        "/politician-profile", "/user-profile", "/index-user", "api"
                 )
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/**")
+                .requestMatchers( "/register", "/meet-the-team", "/login", "/index-visitor", "/about", "/CSS/**", "/templates/**", "/images/**") // anyone can see home, the ads pages, and sign up
                 .permitAll()
+                /* Pages that require authentication */
+
         ;
         return http.build();
     }

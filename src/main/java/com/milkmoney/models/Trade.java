@@ -1,11 +1,13 @@
 package com.milkmoney.models;
 
-public class Trade {
+import java.time.LocalDate;
+
+public class Trade implements Comparable<Trade>{
     private long id;
     private String ticker;
     private String range;
     private String transactionType;
-    private String date;
+    private LocalDate date;
     private Politician politician;
 
     public Trade() {
@@ -58,11 +60,19 @@ public class Trade {
         this.politician = politician;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public int compareTo(Trade trade) {
+        if (getDate() == null || trade.getDate() == null) {
+            return 0;
+        }
+        return getDate().compareTo(trade.getDate());
     }
 }
