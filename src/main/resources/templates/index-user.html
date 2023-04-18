@@ -15,31 +15,16 @@
     <div>
         <div class="card text-center" style="width: 18rem;">
 <!--            <img src="..." class="card-img-top" alt="Avatar Politician Photo">-->
-            <div class="card-body">
-                <h5 class="card-title">Ticker Code</h5>
-                <p class="card-text">Transaction Date</p>
-                <p class="card-text">Transaction Range Amount</p>
+            <div class="card-body" th:each="trade : ${pol?.getTrades()}">
+                <h5 class="card-title" th:text="${trade.getTicker()}"></h5>
+                <p class="card-text" th:text="${trade.getDate}"></p>
+                <p class="card-text" th:text="${trade.getTransactionType()}"></p>
+                <p class="card-text" th:text="${trade.getRange()}"></p>
+
                 <a href="/politician-profile" class="btn btn-primary">View Politician Profile</a>
             </div>
         </div>
 
-        <!-- Profile Page -->
-        <h2>My Profile</h2>
-        <p>Here, you can view your profile details and your favorite politicians.</p>
-        <ul>
-            <li>Username: [Username]</li>
-            <li>Email: [Email Address]</li>
-            <li>Favorite Politicians:</li>
-        </ul>
-        <ul>
-            <li>[Politician Name]</li> <!-- Favorite politician list -->
-            <li>[Politician Name]</li>
-            <li>[Politician Name]</li>
-
-        </ul>
-        <button>Remove Favorite</button> <!-- Remove favorite politician button -->
-        <button>Update Account</button> <!-- Update account details button -->
-        <button>Delete Account</button> <!-- Delete account button -->
     </div>
 </div>
     <footer th:replace="partials/partials :: footer"></footer>

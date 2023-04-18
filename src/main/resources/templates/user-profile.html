@@ -9,7 +9,23 @@
 <body>
 <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
 <div class=" container vh-100">
-    <h1>This is the User Profile Page</h1>
+    <!-- Profile Page -->
+    <h1>My Profile</h1>
+    <p>Here, you can view your profile details and your favorite politicians.</p>
+    <ul>
+        <li>Username: [Username]</li>
+        <li>Email: [Email Address]</li>
+        <li>Favorite Politicians:</li>
+    </ul>
+    <ul>
+        <li>[Politician Name]</li> <!-- Favorite politician list -->
+        <li>[Politician Name]</li>
+        <li>[Politician Name]</li>
+
+    </ul>
+    <button>Remove Favorite</button> <!-- Remove favorite politician button -->
+    <button>Update Account</button> <!-- Update account details button -->
+    <button>Delete Account</button> <!-- Delete account button -->
 </div>
 
 <footer th:replace="partials/partials :: footer"></footer>
