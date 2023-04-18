@@ -1,0 +1,97 @@
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    font-size: 36px;
+    text-align: center;
+}
+
+/* Table Styles */
+.table {
+    margin-top: 50px;
+    margin-right: 75px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1000px;
+
+    border: none;
+}
+
+.table th {
+    background-color: #000;
+    color: #fff;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #fff;
+}
+
+.table td {
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.table td:first-child {
+    font-weight: 500;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #000;
+    color: #fff;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #fff;
+    color: #000;
+}
+
+.table-wrapper {
+    height: 625px;
+    width: 615px;/* adjust to your desired height */
+    overflow-y: scroll;
+}
+
+.card {
+    margin-top: 50px;
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.card-img-top {
+    max-width: 100%;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.p-pic {
+    filter: grayscale(1);
+}
+
+

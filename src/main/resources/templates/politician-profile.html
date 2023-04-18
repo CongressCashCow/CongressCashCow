@@ -4,29 +4,56 @@
     <title>Politician Profile</title>
     <link rel="stylesheet" href="/static/CSS/main.css">
     <link th:replace="partials/partials :: bootstrap">
+    <link rel="stylesheet" href="/CSS/views/politician-profile.css">
 </head>
 <body>
 <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Politician Profile</h1>
 
-<div class="page-wrapper container-fluid d-flex justify-content-center">
-    <div class="container mb3">
-        <div class="row content-center">
-            <div class="column d-flex justify-content-center">
-                <h1>Politician Name</h1>
-                <p>Transaction Type</p>
-                <p>Amount</p>
-                <p>Trade Range</p>
-                <p>Transaction Date</p>
-                <p>Transaction Report Date</p>
-
-                <!-- button to view recent trades -->
-                <button>Recent Trades</button>
-
-                <!-- button to add card to favorites -->
-                <button>Add to Favorites</button>
+            <div class="card">
+                <img th:src="${pol?.getImageURL()}" alt="Politician Photo" class="card-img-top p-pic">
+                <div class="card-body">
+                    <h2 class="card-title" th:text="${pol?.getName}">Politician Name</h2>
+                    <div class="d-grid gap-2">
+                        <form th:action="@{/politician-profile}" th:method="POST" >
+                            <button th:if="${follow}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn btn btn-primary">Unfollow</button>
+                            <input type="hidden" id="pol_id" name="pol_id" th:value="${pol.getName()}">
+                            <button th:unless="${follow}" name="follow-btn" th:value="${true}" type="submit" class="follow-btn btn btn-primary">Follow</button>
+                        </form>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="col-md-6">
+            <div class="table-wrapper">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Amount Range</th>
+                        <th>Type of Sale</th>
+                        <th>Transaction Date</th>
+                        <th>Date Reported</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="trade : ${pol?.getTrades()}">
+                        <td th:text="${trade.getTicker()}"></td>
+                        <td th:text="${trade.getRange()}"></td>
+                        <td th:text="${trade.getTransactionType()}"></td>
+                        <td th:text="${trade.getDate}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 </div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
+</body>

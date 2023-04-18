@@ -1,4 +1,5 @@
 package com.milkmoney.config;
+
 import com.milkmoney.Services.UserDetailsLoader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
