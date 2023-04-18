@@ -38,12 +38,23 @@ public class PoliticianController {
     @GetMapping("/api")
     public String apiView(Authentication authentication, Model model, @RequestParam(required = false,value="searchbar") String searchQuery) {
         Set<Politician> pols = api.getPoliticians();
+        Set<Politician> searchPols = new HashSet<>();
         int limit = 20;
         boolean isLimited = false;
         System.out.println(pols.size());
 
         if(searchQuery != null && searchQuery.trim().length() > 0){
             System.out.println(searchQuery);
+            for(Politician p : politicianDAO.findByNameContaining(searchQuery)){
+                for(Politician pol : pols){
+                    if (pol.getName().equals(p.getName())){
+                        searchPols.add(pol);
+                    }
+                }
+            }
+        }
+        for(Politician p : searchPols){
+            System.out.println(p.getName());
         }
         if (authentication != null && authentication.isAuthenticated()) {
             System.out.println("logged in");
@@ -72,7 +83,11 @@ public class PoliticianController {
             System.out.println(polsToShow.size());
             model.addAttribute("pols",polsToShow);
         }else{
-            model.addAttribute("pols",pols);
+            if(searchPols.size() > 0){
+                model.addAttribute("pols",searchPols);
+            }else {
+                model.addAttribute("pols", pols);
+            }
         }
 
 
@@ -158,6 +173,10 @@ public class PoliticianController {
     public void savePols(){
         politicianDAO.saveAll(api.getPoliticians());
     }
+
+//    private List<Politician> searchPols(String query){
+//        politicianDAO.findAll();
+//    }
 
 
 }
