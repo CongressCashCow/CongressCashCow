@@ -16,10 +16,11 @@ h1 {
 /* Table Styles */
 .table {
     margin-top: 50px;
+    margin-right: 75px;
     border-collapse: collapse;
     width: 100%;
     max-width: 1000px;
-    margin: 50px auto;
+
     border: none;
 }
 
@@ -57,6 +58,12 @@ h1 {
     color: #000;
 }
 
+.table-wrapper {
+    height: 625px;
+    width: 615px;/* adjust to your desired height */
+    overflow-y: scroll;
+}
+
 .card {
     margin-top: 50px;
     max-width: 400px;
@@ -82,3 +89,9 @@ h1 {
     margin-top: 20px;
     margin-bottom: 0;
 }
+
+.p-pic {
+    filter: grayscale(1);
+}
+
+
