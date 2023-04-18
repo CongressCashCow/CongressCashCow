@@ -11,7 +11,7 @@ body {
     /*background-size: 10em;*/
     /*background-repeat: repeat;*/
 }
-.card {
+.card-milk {
     z-index: 5;
     position: relative;
     display: flex;
@@ -217,4 +217,19 @@ body {
 .follow-btn:hover{
     color: #48b46d;
     border: solid 2px #48b46d;
+}
+#search-form{
+    position: relative;
+}
+#searchbar{
+    background-color: transparent;
+    color: var(--dk-brown);
+    border-color: var(--dk-brown);
+    border-radius: 20px;
+    padding: 0 0.5em 0 0.5em;
+}
+.zen-search-icon{
+    position: absolute;
+    right: 4%;
+    top: 16%;
 }
