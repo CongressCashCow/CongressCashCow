@@ -37,22 +37,22 @@ public class SecurityConfiguration {
                 /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/user-profile") // user's home page, it can be any URL
+                .defaultSuccessUrl("/index") // user's home page, it can be any URL
                 .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
                 .logout()
-                .logoutSuccessUrl("/index-visitor") // append a query string value
+                .logoutSuccessUrl("/index") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
                 
-                .requestMatchers("/politician-profile", "/user-profile", "/index-user", "/api", "/api/recent","/api/recent/censored", "/update")
+                .requestMatchers("/politician-profile", "/user-profile", "/api", "/api/recent","/api/recent/censored", "/update")
 
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/register", "/meet-the-team", "/login", "/index-visitor", "/about", "/CSS/**", "/templates/**", "/images/**", "/api/recent", "/api/recent/censored", "/", "/update") // anyone can see home, the ads pages, and sign up
+                .requestMatchers("/register", "/meet-the-team", "/login", "/index-user", "/index", "/about", "/CSS/**", "/templates/**", "/images/**", "/api/recent", "/api/recent/censored", "/", "/update") // anyone can see home, the ads pages, and sign up
 
                 .permitAll()
 

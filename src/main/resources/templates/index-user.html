@@ -1,33 +1,97 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<!--        <link rel="stylesheet" href="/CSS/views/index-user.css">-->
+    <!--        <link rel="stylesheet" href="/CSS/views/index-user.css">-->
     <meta charset="UTF-8">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>Index User</title>
     <script th:replace="partials/partials :: bootstrap"></script>
+    <link rel="stylesheet" href="/CSS/main.css">
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <nav th:replace="~{partials/partials :: navbar}"></nav>
-<div class="container vh-100">
-    <!-- Politician Specific Page -->
-    <div>
-        <div class="card text-center" style="width: 18rem;">
-<!--            <img src="..." class="card-img-top" alt="Avatar Politician Photo">-->
-            <div class="card-body" th:each="trade : ${pol?.getTrades()}">
-                <h5 class="card-title" th:text="${trade.getTicker()}"></h5>
-                <p class="card-text" th:text="${trade.getDate}"></p>
-                <p class="card-text" th:text="${trade.getTransactionType()}"></p>
-                <p class="card-text" th:text="${trade.getRange()}"></p>
+<div class="page-wrapper">
+    <div class="row">
+        <!-- Politician Specific Page -->
+        <h1>Top 20 Trades</h1>
+        <div class="container">
+            <div sec:authorize="isAuthenticated()" th:each="trade : ${trades}">
+                <div class="card-container">
+                    <div class="fake-carton-container">
+                        <div class="fcc-1"></div>
+                        <div class="fcc-2"></div>
+                        <div class="fcc-3"></div>
+                    </div>
+                    <div class="card-milk">
+                        <div class="date" th:text="${trade.getDate()}"></div>
+                        <div class="card-top">
+                            <img class="img" th:src="${trade.getPolitician().getImageURL()}">
+                            <div class="name" th:text="${trade.getPolitician().name}"></div>
+                        </div>
+                        <div class="card-hr"></div>
+                        <div class="card-bot">
+                            <div class="ticker" th:text="${trade.getTicker()}"></div>
+                            <div class="card-bot-right">
+                                <div class="range" th:text="${trade.getRange()}"></div>
+                                <div class="type" th:text="${trade.getTransactionType()}"></div>
+                            </div>
+                        </div>
+                        <form th:action="@{/api/recent}" th:method="POST">
+                            <button th:if="${names?.contains(trade.politician?.getName())}" name="follow-btn"
+                                    th:value="${false}" type="submit" class="unfollow-btn">Unfollow
+                            </button>
+                            <input type="hidden" id="pol_id" name="pol_id" th:value="${trade.politician.getName()}">
+                            <button th:unless="${names?.contains(trade.politician?.getName())}" name="follow-btn"
+                                    th:value="${true}" type="submit" class="follow-btn">Follow
+                            </button>
+                        </form>
+                    </div>
 
-                <a href="/politician-profile" class="btn btn-primary">View Politician Profile</a>
+                    <div class="milk-container">
+                        <div class="wave-clip">
+                            <div class="milk-wave"></div>
+                        </div>
+                        <div class="milk"></div>
+                    </div>
+                    <div class="carton"></div>
+                </div>
+            </div>
+            <div sec:authorize="isAnonymous()" th:each="trade : ${trades}">
+                <div class="card-container">
+                    <div class="fake-carton-container">
+                        <div class="fcc-1"></div>
+                        <div class="fcc-2"></div>
+                        <div class="fcc-3"></div>
+                    </div>
+                    <div class="card">
+                        <div class="date" th:text="${trade.getDate()}"></div>
+                        <div class="card-top">
+                            <img class="img blur" th:src="${trade.getPolitician().getImageURL()}">
+                            <div class="name blur" th:text="${trade.getPolitician().name}"></div>
+                        </div>
+                        <div class="card-hr"></div>
+                        <div class="card-bot">
+                            <div class="tickerblur" th:text="${trade.getTicker()}"></div>
+                            <div class="card-bot-right">
+                                <div class="range" th:text="${trade.getRange()}"></div>
+                                <div class="type" th:text="${trade.getTransactionType()}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="milk-container">
+                        <div class="wave-clip">
+                            <div class="milk-wave"></div>
+                        </div>
+                        <div class="milk"></div>
+                    </div>
+                    <div class="carton"></div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
-    <footer th:replace="partials/partials :: footer"></footer>
-    <script th:replace="partials/partials :: bootstrap-footer"></script>
+<footer  th:replace="partials/partials :: footer"></footer>
+<script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>
 </html>
