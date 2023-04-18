@@ -53,14 +53,19 @@ public class APIService {
             long tradeId = trades.size();
 
             for(Object obj : unformattedObjs){
+//                System.out.println(obj.toString());
                 String ticker = obj.toString().substring(obj.toString().indexOf("Ticker=") + 7,obj.toString().indexOf(", Rep"));
                 String rep = obj.toString().substring(obj.toString().indexOf("Representative=") + 15,obj.toString().indexOf(", Transaction="));
                 String date = obj.toString().substring(obj.toString().indexOf("nDate=") + 6,obj.toString().indexOf(", Tic"));
+                String reportedDate = obj.toString().substring(obj.toString().indexOf("tDate=") + 6,obj.toString().indexOf(", TransactionD"));
                 String type = obj.toString().substring(obj.toString().indexOf("Transaction=") + 12,obj.toString().indexOf(", Am"));
                 String range = obj.toString().substring(obj.toString().indexOf("Range=") + 6,obj.toString().indexOf("}"));
                 boolean isAdded = false;
                 Politician p = null;
 
+                if(reportedDate.equals("null")){
+                    reportedDate = date;
+                }
 
                 for(Politician pol : politicians){
                     if(pol.getName().equals(rep)){
@@ -84,7 +89,9 @@ public class APIService {
                 trade.setRange(range);
                 trade.setTicker(ticker);
                 LocalDate formattedDate = LocalDate.parse(date);
+                LocalDate formattedReportedDate = LocalDate.parse(reportedDate);
                 trade.setDate(formattedDate);
+                trade.setReportedDate(formattedReportedDate);
                 trade.setTransactionType(type);
                 trade.setPolitician(p);
                 trades.add(trade);

@@ -8,6 +8,8 @@ public class Trade implements Comparable<Trade>{
     private String range;
     private String transactionType;
     private LocalDate date;
+
+    private LocalDate reportedDate;
     private Politician politician;
 
     public Trade() {
@@ -66,6 +68,14 @@ public class Trade implements Comparable<Trade>{
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public LocalDate getReportedDate() {
+        return reportedDate;
+    }
+
+    public void setReportedDate(LocalDate reportedDate) {
+        this.reportedDate = reportedDate;
     }
 
     @Override
