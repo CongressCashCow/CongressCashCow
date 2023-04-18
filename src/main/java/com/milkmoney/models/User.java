@@ -13,7 +13,6 @@ public class User {
         email = copy.email;
         username = copy.username;
         password = copy.password;
-        politicians = copy.politicians;
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +28,7 @@ public class User {
     @JoinTable(
             name = "users_politicians",
             joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "politician_id")}
+            inverseJoinColumns = {@JoinColumn(name = "name")}
     )
     private List<Politician> politicians;
 
@@ -79,5 +78,19 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Politician> getPoliticians() {
+        return politicians;
+    }
+
+    public void setPoliticians(List<Politician> politicians) {
+        this.politicians = politicians;
+    }
+    public void addPolitician(Politician politician){
+        this.politicians.add(politician);
+    }
+    public void removePolitician(Politician politician){
+        this.politicians.remove(politician);
     }
 }
