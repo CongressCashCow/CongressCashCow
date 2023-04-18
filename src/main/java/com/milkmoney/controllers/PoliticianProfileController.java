@@ -39,14 +39,8 @@ public class PoliticianProfileController {
         List<Trade> polTrades = new ArrayList<>();
 
         Politician p = politicianDAO.findByName("Virginia Foxx");
-//        for (Trade t : p.getTrades()) {
-//            System.out.println(t.getTicker());
-//        }
-        for (Trade t : trades) {
-            if (t.getPolitician().getName().equals(p.getName())){
-                polTrades.add(t);
-            }
-        }
+
+        polTrades = api.getPoliticianTrades(p.getName());
         if(fixedUser.getPoliticians().contains(p)) {
             model.addAttribute("follow", true);
         } else {

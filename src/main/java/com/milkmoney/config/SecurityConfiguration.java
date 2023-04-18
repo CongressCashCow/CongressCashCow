@@ -46,7 +46,7 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/politician-profile", "/user-profile",  "/update")
+                .requestMatchers("/politician-profile", "/user-profile",  "/update", "/trades")
 
                 .authenticated()
                 .and()
