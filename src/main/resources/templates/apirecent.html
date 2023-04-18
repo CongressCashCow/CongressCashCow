@@ -1,54 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <link rel="stylesheet" href="/CSS/main.css">
-    <meta charset="UTF-8">
-    <title>API Recent</title>
+  <script th:replace="partials/partials :: bootstrap"></script>
+  <link rel="stylesheet" href="/CSS/main.css">
+  <meta charset="UTF-8">
+  <title>API Recent</title>
 </head>
 <body>
+<nav th:replace="~{partials/partials :: navbar}"></nav>
 <h1>Top 20</h1>
 <div class="container">
-    <div sec:authorize="isAuthenticated()" th:each="trade : ${trades}">
-        <div class="card-container">
-            <div class="fake-carton-container">
-                <div class="fcc-1"></div>
-                <div class="fcc-2"></div>
-                <div class="fcc-3"></div>
-            </div>
-            <div class="card">
-                <div class="date" th:text="${trade.getDate()}"></div>
-                <div class="card-top">
-                    <img class="img" th:src="${trade.getPolitician().getImageURL()}">
-                    <div class="name" th:text="${trade.getPolitician().name}"></div>
-                </div>
-                <div class="card-hr"></div>
-                <div class="card-bot">
-                    <div class="ticker" th:text="${trade.getTicker()}"></div>
-                    <div class="card-bot-right">
-                        <div class="range" th:text="${trade.getRange()}"></div>
-                        <div class="type" th:text="${trade.getTransactionType()}"></div>
-                    </div>
-                    <!-- <div class="body">This is the body</div> -->
-                </div>
-                <!--          <div th:each="pol : ${#authentication.principal.politicians}">-->
-                <!--              <div>-->
-                <!--                  <span th:text="${trade.politician.getName()}"></span>-->
-                <!--                  <span th:text="${pol.name}"></span>-->
-                <!--              </div>-->
-                <!--          </div>-->
-                <!--        <div th:each="mypol : ${#authentication.principal.politicians}">-->
-                <!--          <div th:text="${mypol.name}"></div>-->
-                <!--          </div>-->
-                <form th:action="@{/api/recent}" th:method="POST">
-                    <button th:if="${names?.contains(trade.politician?.getName())}" name="follow-btn"
-                            th:value="${false}" type="submit" class="unfollow-btn">Unfollow
-                    </button>
-                    <input type="hidden" id="pol_id" name="pol_id" th:value="${trade.politician.getName()}">
-                    <button th:unless="${names?.contains(trade.politician?.getName())}" name="follow-btn"
-                            th:value="${true}" type="submit" class="follow-btn">Follow
-                    </button>
-                </form>
-            </div>
+  <div sec:authorize="isAuthenticated()" th:each="trade : ${trades}" >
+    <div class="card-container">
+      <div class="fake-carton-container">
+        <div class="fcc-1"></div>
+        <div class="fcc-2"></div>
+        <div class="fcc-3"></div>
+      </div>
+      <div class="card-milk">
+        <div class="date" th:text="${trade.getDate()}"></div>
+        <div class="card-top">
+          <img class="img" th:src="${trade.getPolitician().getImageURL()}">
+          <div class="name" th:text="${trade.getPolitician().name}"></div>
+        </div>
+        <div class="card-hr"></div>
+        <div class="card-bot">
+          <div class="ticker" th:text="${trade.getTicker()}"></div>
+          <div class="card-bot-right">
+            <div class="range" th:text="${trade.getRange()}"></div>
+            <div class="type" th:text="${trade.getTransactionType()}"></div>
+          </div>
+          <!-- <div class="body">This is the body</div> -->
+        </div>
+<!--          <div th:each="pol : ${#authentication.principal.politicians}">-->
+<!--              <div>-->
+<!--                  <span th:text="${trade.politician.getName()}"></span>-->
+<!--                  <span th:text="${pol.name}"></span>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--        <div th:each="mypol : ${#authentication.principal.politicians}">-->
+<!--          <div th:text="${mypol.name}"></div>-->
+<!--          </div>-->
+          <form th:action="@{/api/recent}" th:method="POST" >
+            <button th:if="${names?.contains(trade.politician?.getName())}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn">Unfollow</button>
+            <input type="hidden" id="pol_id" name="pol_id" th:value="${trade.politician.getName()}">
+            <button th:unless="${names?.contains(trade.politician?.getName())}" name="follow-btn" th:value="${true}" type="submit" class="follow-btn">Follow</button>
+          </form>
+        </div>
 
             <div class="milk-container">
                 <div class="wave-clip">

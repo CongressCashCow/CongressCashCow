@@ -46,14 +46,12 @@ public class SecurityConfiguration {
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
-                
-                .requestMatchers("/politician-profile", "/user-profile", "/api", "/api/recent","/api/recent/censored", "/update")
+                .requestMatchers("/politician-profile", "/user-profile",  "/update")
 
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/register", "/meet-the-team", "/login", "/index-user", "/index", "/about", "/CSS/**", "/templates/**", "/images/**", "/api/recent", "/api/recent/censored", "/", "/update") // anyone can see home, the ads pages, and sign up
-
+                .requestMatchers( "/register", "/meet-the-team", "/login", "/index", "/about", "/CSS/**", "/templates/**", "/images/**", "/api", "/api/recent",  "/") // anyone can see home, the ads pages, and sign up
                 .permitAll()
 
 
