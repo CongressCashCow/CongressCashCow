@@ -4,29 +4,48 @@
     <title>Politician Profile</title>
     <link rel="stylesheet" href="/static/CSS/main.css">
     <link th:replace="partials/partials :: bootstrap">
+    <link rel="stylesheet" href="/CSS/views/politician-profile.css">
+    </link>
 </head>
 <body>
 <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
 
-<div class="page-wrapper container-fluid d-flex justify-content-center">
-    <div class="container mb3">
-        <div class="row content-center">
-            <div class="column d-flex justify-content-center">
-                <h1>Politician Name</h1>
-                <p>Transaction Type</p>
-                <p>Amount</p>
-                <p>Trade Range</p>
-                <p>Transaction Date</p>
-                <p>Transaction Report Date</p>
-
-                <!-- button to view recent trades -->
-                <button>Recent Trades</button>
-
-                <!-- button to add card to favorites -->
-                <button>Add to Favorites</button>
-            </div>
+<div class="container">
+    <div class="card">
+        <img src="https://via.placeholder.com/400x400" alt="Politician Photo" class="card-img-top">
+        <div class="card-body">
+            <h2 class="card-title" th:text="${pol?.getName}">Politician Name</h2>
         </div>
     </div>
 </div>
+
+<div class="container">
+    <h1>Politician Profile</h1>
+    <div th:each="trade : ${pol?.getTrades()}">
+        <table class="table table-striped">
+            <thead>
+
+            <tr>
+                <th>Ticker</th>
+                <th>Amount Range</th>
+                <th>Type of Sale</th>
+                <th>Transaction Date</th>
+                <th>Date Reported</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${trade.getTicker()}"></td>
+                <td th:text="${trade.getRange()}"></td>
+                <td th:text="${trade.getTransactionType()}"></td>
+                <td th:text="${trade.getDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
+</body>

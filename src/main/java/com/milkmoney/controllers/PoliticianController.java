@@ -26,6 +26,7 @@ public class PoliticianController {
     private final UserRepository userDAO;
     private final PoliticianRepository politicianDAO;
     private APIService api;
+
     public PoliticianController(PoliticianRepository politicianDAO, UserRepository userDAO, APIService api) {
         this.politicianDAO = politicianDAO;
         this.userDAO = userDAO;
@@ -33,34 +34,26 @@ public class PoliticianController {
     }
 
     @GetMapping("/update")
+
     public String update(){
         savePols();
         return "redirect:/api";
     }
+
     @GetMapping("/api")
     public String apiView(Model model) {
         Set<Politician> pols = api.getPoliticians();
-        model.addAttribute("pols",pols);
+        model.addAttribute("pols", pols);
         return "api";
     }
-//    public String showProfilePage(Authentication authentication, Model model) {
-//        if (authentication != null && authentication.isAuthenticated()) {
-//            // User is authenticated, add user details to the model and return the name of the profile view
-//            User user = (User) authentication.getPrincipal();
-//            model.addAttribute("username", user.getUsername());
-//            model.addAttribute("email", user.getEmail());
-//            return "profile";
-//        } else {
-//            // User is not authenticated, redirect to the login page
-//            return "redirect:/login";
-//        }
-//    }
+
     @GetMapping("/api/recent")
     public String apiRecent(Authentication authentication, Model model) {
         List<Trade> recentTrades = new ArrayList<>();
         List<Trade> trades = api.getTrades();
         List<String> tradeNames = new ArrayList<>();
         int f = 0;
+
 //        if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
 //            System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass());
         if (authentication != null && authentication.isAuthenticated()) {
@@ -92,6 +85,7 @@ public class PoliticianController {
                 break;
             }
         }
+
         model.addAttribute("trades",recentTrades);
 
         return "apirecent";
@@ -125,18 +119,19 @@ public class PoliticianController {
         List<Trade> trades = api.getTrades();
         List<Trade> recentTrades = new ArrayList<>();
         int f = 0;
-        for(Trade t : trades){
-            if(f < 20){
+        for (Trade t : trades) {
+            if (f < 20) {
                 recentTrades.add(t);
                 f++;
-            }else {
+            } else {
                 break;
             }
         }
-        model.addAttribute("trades",recentTrades);
+        model.addAttribute("trades", recentTrades);
         return "apirecentcensored";
     }
-    public void savePols(){
+
+    public void savePols() {
         politicianDAO.saveAll(api.getPoliticians());
     }
 
