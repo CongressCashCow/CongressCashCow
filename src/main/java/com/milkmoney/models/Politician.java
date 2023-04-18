@@ -62,6 +62,8 @@ public class Politician {
         return trades;
     }
 
+    public Trade getLatestTrade(){return trades.get(0);}
+
     public void setTrades(List<Trade> trades) {
         this.trades = trades;
     }

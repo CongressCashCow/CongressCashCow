@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+  <script th:replace="partials/partials :: bootstrap"></script>
   <link rel="stylesheet" href="/CSS/main.css">
+
   <meta charset="UTF-8">
   <title>API Recent</title>
 </head>
 <body>
+<nav th:replace="~{partials/partials :: navbar}"></nav>
 <h1>Top 20</h1>
 <div class="container">
   <div sec:authorize="isAuthenticated()" th:each="trade : ${trades}" >
@@ -15,7 +18,7 @@
         <div class="fcc-2"></div>
         <div class="fcc-3"></div>
       </div>
-      <div class="card">
+      <div class="card-milk">
         <div class="date" th:text="${trade.getDate()}"></div>
         <div class="card-top">
           <img class="img" th:src="${trade.getPolitician().getImageURL()}">

@@ -7,14 +7,12 @@ import com.milkmoney.models.Politician;
 import com.milkmoney.models.Trade;
 import com.milkmoney.models.User;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,7 +23,7 @@ import java.util.Set;
 public class PoliticianController {
     private final UserRepository userDAO;
     private final PoliticianRepository politicianDAO;
-    private APIService api;
+    private final APIService api;
     public PoliticianController(PoliticianRepository politicianDAO, UserRepository userDAO, APIService api) {
         this.politicianDAO = politicianDAO;
         this.userDAO = userDAO;
@@ -38,9 +36,46 @@ public class PoliticianController {
         return "redirect:/api";
     }
     @GetMapping("/api")
-    public String apiView(Model model) {
+    public String apiView(Authentication authentication, Model model, @RequestParam(required = false,value="searchbar") String searchQuery) {
         Set<Politician> pols = api.getPoliticians();
-        model.addAttribute("pols",pols);
+        int limit = 20;
+        boolean isLimited = false;
+        System.out.println(pols.size());
+
+        if(searchQuery != null && searchQuery.trim().length() > 0){
+            System.out.println(searchQuery);
+        }
+        if (authentication != null && authentication.isAuthenticated()) {
+            System.out.println("logged in");
+
+            User currentUser = (User) authentication.getPrincipal();
+            User fixedUser = userDAO.findByUsername(currentUser.getUsername());
+
+            List<String> names = new ArrayList<>();
+
+            for (Politician p : fixedUser.getPoliticians()) {
+                names.add(p.getName());
+            }
+            model.addAttribute("names",names);
+        } else {
+            System.out.println("logged out");
+        }
+        Set<Politician> polsToShow = new HashSet<>();
+        if(isLimited) {
+            for (Politician p : pols) {
+                if (polsToShow.size() < limit) {
+                    polsToShow.add(p);
+                } else {
+                    break;
+                }
+            }
+            System.out.println(polsToShow.size());
+            model.addAttribute("pols",polsToShow);
+        }else{
+            model.addAttribute("pols",pols);
+        }
+
+
         return "api";
     }
 //    public String showProfilePage(Authentication authentication, Model model) {
@@ -57,16 +92,15 @@ public class PoliticianController {
 //    }
     @GetMapping("/api/recent")
     public String apiRecent(Authentication authentication, Model model) {
+//        String searchQuery = model.getAttribute("searchbar").toString();
+
         List<Trade> recentTrades = new ArrayList<>();
         List<Trade> trades = api.getTrades();
         List<String> tradeNames = new ArrayList<>();
         int f = 0;
-//        if(SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
-//            System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass());
+
         if (authentication != null && authentication.isAuthenticated()) {
-            // User is authenticated, add user details to the model and return the name of the profile view
-//            User user = (User) authentication.getPrincipal();
-//            System.out.println("logged in");
+
 
             User currentUser = (User) authentication.getPrincipal();
             User fixedUser = userDAO.findByUsername(currentUser.getUsername());
@@ -120,22 +154,7 @@ public class PoliticianController {
 
         return "redirect:/api/recent";
     }
-    @GetMapping("/api/recent/censored")
-    public String apiRecentLimited(Model model) {
-        List<Trade> trades = api.getTrades();
-        List<Trade> recentTrades = new ArrayList<>();
-        int f = 0;
-        for(Trade t : trades){
-            if(f < 20){
-                recentTrades.add(t);
-                f++;
-            }else {
-                break;
-            }
-        }
-        model.addAttribute("trades",recentTrades);
-        return "apirecentcensored";
-    }
+
     public void savePols(){
         politicianDAO.saveAll(api.getPoliticians());
     }
