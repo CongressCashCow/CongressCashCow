@@ -8,9 +8,9 @@
 </head>
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
+<div class="background">
 <h1>api testing</h1>
 <div class="container">
-
         <div sec:authorize="isAuthenticated()" th:each="pol : ${pols}" >
             <div class="card-container">
                 <div class="fake-carton-container">
@@ -28,25 +28,19 @@
                     <div class="card-bot">
                         <div class="ticker" th:text="${pol.getLatestTrade()?.getTicker()}"></div>
                         <div class="card-bot-right">
-                            <div class="range" th:text="${pol.getLatestTrade()?.getRange()}"></div>
-                            <div class="type" th:text="${pol.getLatestTrade()?.getTransactionType()}"></div>
+                            <div>
+                                <div class="range" th:text="${pol.getLatestTrade()?.getRange()}"></div>
+                                <div class="type" th:text="${pol.getLatestTrade()?.getTransactionType()}"></div>
+                            </div>
+                            <form th:action="@{/api/recent}" th:method="POST" >
+                                <button th:if="${names?.contains(pol.getName())}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn">Unfollow</button>
+                                <input type="hidden" id="pol_id" name="pol_id" th:value="${pol.getName()}">
+                                <button th:unless="${names?.contains(pol.getName())}" name="follow-btn" th:value="${true}" type="submit" class="follow-btn">Follow</button>
+                            </form>
                         </div>
                         <!-- <div class="body">This is the body</div> -->
                     </div>
-                    <!--          <div th:each="pol : ${#authentication.principal.politicians}">-->
-                    <!--              <div>-->
-                    <!--                  <span th:text="${trade.politician.getName()}"></span>-->
-                    <!--                  <span th:text="${pol.name}"></span>-->
-                    <!--              </div>-->
-                    <!--          </div>-->
-                    <!--        <div th:each="mypol : ${#authentication.principal.politicians}">-->
-                    <!--          <div th:text="${mypol.name}"></div>-->
-                    <!--          </div>-->
-                    <form th:action="@{/api/recent}" th:method="POST" >
-                        <button th:if="${names?.contains(pol.getName())}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn">Unfollow</button>
-                        <input type="hidden" id="pol_id" name="pol_id" th:value="${pol.getName()}">
-                        <button th:unless="${names?.contains(pol.getName())}" name="follow-btn" th:value="${true}" type="submit" class="follow-btn">Follow</button>
-                    </form>
+
                 </div>
 
                 <div class="milk-container">
@@ -106,5 +100,12 @@
 <!--    </div>-->
 <!--    -->
 <!--</div>-->
+</div>
+<footer class="testfooter">
+<!--    <div class="footer-field"></div>-->
+    <img class="footer-field" src="/images/yard.png" alt="grass">
+    <img class="footer-cow" src="/CSS/cow.png" alt="cow">
+    <div class="footer-main">this is a footer</div>
+</footer>
 </body>
 </html>

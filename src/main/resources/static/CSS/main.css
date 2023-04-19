@@ -5,11 +5,45 @@
 * {
     font-family: "lexend", "Tahoma", sans-serif;
 }
-body {
-    background-image: url("cow.webp");
+/*html{*/
+/*    height: 100%;*/
+/*}*/
+/*body {*/
 
-    /*background-size: 10em;*/
-    /*background-repeat: repeat;*/
+/*}*/
+
+@media only screen and (max-width: 2599px) {
+
+}
+@media only screen and (min-width: 2600px) {
+    .background{
+        padding: 0 15%;
+    }
+}
+.background{
+
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10em;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: rgb(10,16,49);
+    background: linear-gradient(180deg, rgba(10,16,49,1) 0%, rgba(36,10,96,1) 41%, rgba(45,38,150,1) 84%, rgba(203,109,109,1) 100%);
+
+}
+
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 .card-milk {
     z-index: 5;
@@ -24,6 +58,22 @@ body {
     height: 100%;
     transition: all 0.75s ease;
 }
+/*.card-milk>form{*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*}*/
+.card-bot-right>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    width: 100%;
+}
+.card-bot-right>form{
+        width: 100%;
+        display: flex;
+    justify-content: center;
+}
 .carton{
     z-index: 3;
     background-image: url("milk.webp");
@@ -33,7 +83,7 @@ body {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.25;
+    opacity: 0.15;
 }
 
 .img {
@@ -43,12 +93,12 @@ body {
     display: inline-block;
     border: solid 1px #eee;
     aspect-ratio: 1 / 1;
-    width: 5em;
+    width: 20%;
     border-radius: 0.1em;
 }
 .name {
     margin-left: 0.5em;
-    font-size: 2em;
+    font-size: 2vw;
     font-weight: 100;
     display: inline-block;
 }
@@ -59,10 +109,10 @@ body {
     margin-top: 1em;
 }
 .card-top {
-    margin-left: 4em;
-    margin-top: 11em;
+    /*margin-left: 18%;*/
+    margin-top: 33%;
     display: flex;
-    width: 100%;
+    width: 88%;
     justify-content: start;
     align-items: center;
 }
@@ -81,24 +131,31 @@ body {
 .container {
     display: flex;
     width: 90%;
-    height: 100vh;
+    justify-content: center;
+    /*height: 100vh;*/
     flex-wrap: wrap;
+}
+.container>div {
+
+    width: 33%;
+
 }
 .date {
     font-family: "Courier New", Courier, monospace;
 
-    margin: 2em 3em 0 auto;
+    margin: 5% 11%  0 auto;
 }
 .ticker {
     color: #00ff59;
-    font-size: 4em;
+    font-size: 4vw;
     font-weight: lighter;
 }
 
 .card-container {
     position: relative;
-    width: 29em;
-    height: 33em;
+    aspect-ratio: 29 / 33;
+    width: 90%;
+    /*height: 33em;*/
 }
 
 .fake-carton-container {
@@ -195,7 +252,8 @@ body {
 }
 
 .follow-btn{
-    padding: 0.5em;
+    /*padding: 0.5em;*/
+    /*margin: 0 10% 0 auto;*/
     color: #00ff59;
     background-color: transparent;
     border: solid 2px #00ff59;
@@ -203,7 +261,8 @@ body {
     transition: all 1s;
 }
 .unfollow-btn{
-    padding: 0.5em;
+    /*padding: 0.5em;*/
+    /*margin: 0 10% 0 auto;*/
     color: #ff8e8e;
     background-color: transparent;
     border: solid 2px #ff8e8e;
@@ -223,8 +282,8 @@ body {
 }
 #searchbar{
     background-color: transparent;
-    color: var(--dk-brown);
-    border-color: var(--dk-brown);
+    /*color: var(--dk-brown);*/
+    /*border-color: var(--dk-brown);*/
     border-radius: 20px;
     padding: 0 0.5em 0 0.5em;
 }
@@ -232,4 +291,34 @@ body {
     position: absolute;
     right: 4%;
     top: 16%;
+}
+.testfooter{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 10em;
+flex-direction: column;
+
+}
+.footer-field{
+    position: absolute;
+    /*background-image: url("yard.png");*/
+    /*background-size: cover;*/
+    width: 100%;
+    height: 100%;
+    bottom: 100%;
+}
+.footer-cow{
+    /*background-image: url("cow.png");*/
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: 180%;
+    right: 25%;
+}
+.footer-main{
+    width: 100%;
+    height: 100%;
+    /*color: #eeeeee;*/
+    background: #378530;
 }
