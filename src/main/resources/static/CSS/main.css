@@ -13,11 +13,13 @@ body {
 }
 .top-img{
     background-image: url("../images/capitol-building.jpg");
-
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: bottom;
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .extend {
@@ -29,8 +31,8 @@ body {
     display: flex;
     justify-content: center;
     color: white;
-    background-color: rgba(0, 0, 0, 0.51);
-    width: 90%;
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100%;
 }
 
 .card-milk {
