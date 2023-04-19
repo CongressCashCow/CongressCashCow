@@ -17,11 +17,11 @@
   <input id="tradesearchbar" name="searchbar" type="text" placeholder="Search Trades...">
 
 </form>
-<h1 th:text="${trades.size()}"></h1>
+<h1 class="ticker" th:text="${trades.size()}"></h1>
 <div th:if="${trades.size() > 0}">
   <div th:each="trade : ${trades}">
     <div>
-      <span th:text="${trade.ticker}"></span>
+      <span class="ticker" th:text="${trade.ticker}"></span>
       <span th:text="${trade.transactionType}"></span>
       <span th:text="${trade.range}"></span>
       <span th:text="${trade.politician.name}"></span>
@@ -31,7 +31,7 @@
   </div>
 </div>
 <div th:unless="${trades.size() > 0}">
-  <h1>No results..........</h1>
+  <h1 class="ticker">No results..........</h1>
 </div>
 
 </body>
