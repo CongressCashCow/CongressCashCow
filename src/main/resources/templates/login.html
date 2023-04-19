@@ -6,10 +6,10 @@
     <script th:replace="~{partials/partials :: bootstrap}"></script>
     <link rel="stylesheet" href="/CSS/views/login_register.css">
 </head>
-<body>
+<body class="">
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 
-<div class="container vh-100">
+<div class="container min-vh-100 background">
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8">
             <div class="card mt-5">
@@ -24,7 +24,7 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block mt-5">Login</button>
                         <hr>
 
                     </form>
