@@ -1,34 +1,64 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>User Profile</title>
     <link th:replace="partials/partials :: bootstrap">
-
+    <link rel="stylesheet" href="/CSS/views/user-profile.css">
 </head>
 <body>
-<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
-<div class=" container vh-100">
-    <!-- Profile Page -->
-    <h1>My Profile</h1>
-    <p>Here, you can view your profile details and your favorite politicians.</p>
-    <ul>
-        <li>Username: [Username]</li>
-        <li>Email: [Email Address]</li>
-        <li>Favorite Politicians:</li>
-    </ul>
-    <ul>
-        <li>[Politician Name]</li> <!-- Favorite politician list -->
-        <li>[Politician Name]</li>
-        <li>[Politician Name]</li>
+<div id="page-wrap">
 
-    </ul>
-    <button>Remove Favorite</button> <!-- Remove favorite politician button -->
-    <button>Update Account</button> <!-- Update account details button -->
-    <button>Delete Account</button> <!-- Delete account button -->
 </div>
+<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
+<div class="container vh-100">
+    <!-- Profile Page -->
+        <div class="col-md-4 mb-4">
+            <div class="card ">
+                <img src="[User Avatar URL]" alt="[User Name]'s avatar" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">[User Name]</h5>
+                    <p class="card-text">[User Email]</p>
+                    <a href="#" class="btn btn-primary">Edit Profile</a>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-md-8">
+            <div class="scrollable">
+                <div class="row">
+                    <!-- Politician cards -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <img src="[Politician Avatar URL]" alt="[Politician Name]'s avatar" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">[Politician Name]</h5>
+                                <p class="card-text">[Latest Stock Trade Ticker Name]</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat politician cards for each favorite -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <img src="[Politician Avatar URL]" alt="[Politician Name]'s avatar" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">[Politician Name]</h5>
+                                <p class="card-text">[Latest Stock Trade Ticker Name]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <button class="btn btn-danger">Remove Favorite</button>
+            <button class="btn btn-primary">Update Account</button>
+            <button class="btn btn-secondary">Delete Account</button>
+        </div>
+    </div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>
-</html>
