@@ -90,21 +90,21 @@ public class Politician {
         for(Trade t : trades){
             if(t.getTransactionType().equals("Sale")) {
                 if(t.getRange().contains("-")) {
-                    String[] arr = t.getRange().replace(",", "").replace("$", "").split("-", 2);
+                    String[] arr = t.getRange().replace(" ", "").replace(",", "").replace("$", "").split("-", 2);
                     stotalLow += Long.parseLong(arr[0]);
                     stotalHigh += Long.parseLong(arr[1]);
                 }else{
-                    stotalLow += Long.parseLong(t.getRange().replace(",", "").replace("$", "").replace("+", ""));
-                    stotalHigh += Long.parseLong(t.getRange().replace(",", "").replace("$", "").replace("+", ""));
+                    stotalLow += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", ""));
+                    stotalHigh += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", ""));
                 }
             } else if (t.getTransactionType().equals("Purchase")) {
                 if(t.getRange().contains("-")) {
-                String[] arr = t.getRange().replace(",", "").replace("$", "").split("-", 2);
+                String[] arr = t.getRange().replace(" ", "").replace(",", "").replace("$", "").split("-", 2);
                 ptotalLow += Long.parseLong(arr[0]);
                 ptotalHigh += Long.parseLong(arr[1]);
                 }else{
-                    ptotalLow += Long.parseLong(t.getRange().replace(",", "").replace("$", "").replace("+", ""));
-                    ptotalHigh += Long.parseLong(t.getRange().replace(",", "").replace("$", "").replace("+", ""));
+                    ptotalLow += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", ""));
+                    ptotalHigh += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", ""));
 
                 }
             }
