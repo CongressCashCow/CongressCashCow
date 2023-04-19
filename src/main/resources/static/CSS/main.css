@@ -45,6 +45,30 @@ body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+.top-img{
+    background-image: url("../images/capitol-building.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.extend {
+    height: 104vh;
+    width: 100%;
+}
+
+.top-img-banner {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100%;
+}
+
 .card-milk {
     z-index: 5;
     position: relative;
