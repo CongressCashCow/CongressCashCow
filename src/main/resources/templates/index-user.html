@@ -9,12 +9,18 @@
     <link rel="stylesheet" href="/CSS/main.css">
 
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 <div class="page-wrapper">
-    <div class="row">
-        <!-- Politician Specific Page -->
-        <h1>Top 20 Trades</h1>
+    <div class="  top-img extend">
+        <div class="align-items-center">
+            <h1 class=" top-img-banner mt-5">WELCOME TO Milk Money! Placeholder</h1>
+            <h2 class=" top-img-banner">One stop shop for herding stocks! Placeholder</h2>
+        </div>
+    </div>
+
+    <!-- Politician Specific Page -->
+        <h1 >Top 20 Trades</h1>
         <div class="container">
             <div sec:authorize="isAuthenticated()" th:each="trade : ${trades}">
                 <div class="card-container">
@@ -89,9 +95,8 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
-<footer  th:replace="partials/partials :: footer"></footer>
+<footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>
 </html>

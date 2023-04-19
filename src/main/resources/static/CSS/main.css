@@ -11,6 +11,28 @@ body {
     /*background-size: 10em;*/
     /*background-repeat: repeat;*/
 }
+.top-img{
+    background-image: url("../images/capitol-building.jpg");
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+}
+
+.extend {
+    height: 104vh;
+    width: 100%;
+}
+
+.top-img-banner {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.51);
+    width: 90%;
+}
+
 .card-milk {
     z-index: 5;
     position: relative;
