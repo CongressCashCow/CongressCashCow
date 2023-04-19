@@ -22,7 +22,15 @@
                     <div class="date" th:text="${pol.getLatestTrade()?.getDate()}"></div>
                     <div class="card-top">
                         <img class="img" th:src="${pol.getImageURL()}">
+                        <div>
                         <a class="name" th:href="@{'/politician-profile?pol=' + ${pol.name}}" th:text="${pol.name}"></a>
+                        <div th:text="${pol.getTradeCount()}"></div>
+                        <div th:text="${pol.getTotals()[0]}"></div>
+                        <div th:text="${pol.getTotals()[1]}"></div>
+                        <div th:text="${pol.getTotals()[2]}"></div>
+                        <div th:text="${pol.getTotals()[3]}"></div>
+                        </div>
+
                     </div>
                     <div class="card-hr"></div>
                     <div class="card-bot">
