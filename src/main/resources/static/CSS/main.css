@@ -45,6 +45,30 @@ body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+.top-img{
+    background-image: url("/images/capitol-building-filter.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.extend {
+    height: 104vh;
+    width: 100%;
+}
+
+.top-img-banner {
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 100%;
+}
+
 .card-milk {
     z-index: 5;
     position: relative;
@@ -58,6 +82,7 @@ body {
     height: 100%;
     transition: all 0.75s ease;
 }
+
 /*.card-milk>form{*/
 /*    width: 100%;*/
 /*    display: flex;*/
@@ -76,7 +101,7 @@ body {
 }
 .carton{
     z-index: 3;
-    background-image: url("milk.webp");
+    background-image: url("../images/milk.webp");
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -97,10 +122,13 @@ body {
     border-radius: 0.1em;
 }
 .name {
+    color: #eee;
     margin-left: 0.5em;
     font-size: 2vw;
     font-weight: 100;
     display: inline-block;
+    transition: color 1s;
+    /*transition-delay: 1s;*/
 }
 
 .card-hr {
@@ -141,6 +169,7 @@ body {
 
 }
 .date {
+    color: #eee;
     font-family: "Courier New", Courier, monospace;
 
     margin: 5% 11%  0 auto;
@@ -213,12 +242,20 @@ body {
     left: 0%;
     width: 200%;
     height: 100%;
-    background: url("waves.png") repeat-x;
+    background: url("../images/waves.png") repeat-x;
     background-size: contain;
 
     transform: translate(0);
 }
-
+.range{
+    transition: color 1s;
+    color: #eee;}
+.type{
+    transition: color 1s;
+    color: #eee;}
+.card-container:hover .name, .card-container:hover .range, .card-container:hover .type{
+color: #222;
+}
 .card-container:hover .milk-container {
     height: 100%;
 }
