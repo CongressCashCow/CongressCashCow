@@ -35,9 +35,9 @@ public class PoliticianProfileController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User fixedUser = userDAO.findById(currentUser.getId()).get();
 
-        List<Trade> trades = api.getTrades();
-        List<Trade> polTrades = new ArrayList<>();
-        Politician p = new Politician();
+//        List<Trade> trades = api.getTrades();
+        List<Trade> polTrades;
+        Politician p;
         if(searchQuery != null && searchQuery.trim().length() > 0){
 //            for(Trade t : trades){
 //                if(t.getTicker().equalsIgnoreCase(searchQuery)){
