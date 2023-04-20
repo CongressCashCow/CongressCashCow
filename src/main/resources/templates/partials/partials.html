@@ -58,12 +58,40 @@
     </div>
 </nav>
 
-<footer class="testfooter">
+<footer class="testfooter my-5">
     <!--    <div class="footer-field"></div>-->
     <img class="footer-field" src="/images/yard.png" alt="grass">
     <img class="footer-cow" src="/images/cow.png" alt="cow">
-    <div class="footer-main">this is a footer</div>
+    <div class="footer-main container-fluid">
+        <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase">Milk-Money</h5>
+                    <p>&copy; 2023 Milk-Money. All rights reserved.</p>
+                    <p>Milk-Money is a trademark of Milk-Money, Inc.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-3">Connect with us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white"><i class="fab fa-twitter fa-fw fa-lg mr-2"></i>Twitter</a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-facebook fa-fw fa-lg mr-2"></i>Facebook</a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-instagram fa-fw fa-lg mr-2"></i>Instagram</a></li>
+                        <li><a href="#" class="text-white"><i class="fab fa-linkedin fa-fw fa-lg mr-2"></i>LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h5 class="text-uppercase mb-3">Contact us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white"><i class="fas fa-map-marker-alt fa-fw fa-lg mr-2"></i>1234 Main St., Anytown USA</a></li>
+                        <li><a href="#" class="text-white"><i class="fas fa-phone fa-fw fa-lg mr-2"></i>(123) 456-7890</a></li>
+                        <li><a href="#" class="text-white"><i class="fas fa-envelope fa-fw fa-lg mr-2"></i>support@milk-money.com</a></li>
+                    </ul>
+                </div>
+            </div>
+    </div>
 </footer>
+<!--<footer class="bg-dark text-white pt-4 pb-3" th:fragment="footer">-->
+<!--    -->
+<!--</footer>-->
 <script th:fragment="bootstrap-footer" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
