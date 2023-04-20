@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link th:replace="partials/partials :: bootstrap">
+<link rel="stylesheet" href="/CSS/views/user-profile.css">
 <head>
+    <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
     <meta charset="UTF-8">
     <title>Title</title>
 <!--    <link th:replace="partials/partials :: bootstrap"></link>-->
 
 </head>
 <body>
-<!--<nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>-->
-<div class="vh-100">
-    <h1>This is the about page</h1>
-</div>
+<h1>About Politician Trades Tracker</h1>
+<p>Keeping track of the stock market activity of politicians can be a daunting task for the average person, especially for beginners. The Politician Trades Tracker application was created to make it easier for individuals to stay up-to-date on the latest trades made by politicians in the US Congress.</p>
+less
+Copy code
+<h2>What is Politician Trades Tracker?</h2>
+<p>Politician Trades Tracker is a web-based application that allows users to easily monitor the stock market activity of politicians in the US Congress. The application provides real-time updates on trades made by politicians, allowing users to stay informed on the latest market trends and changes.</p>
 
-<!--<footer th:replace="partials/partials :: footer"></footer>-->
-<!--<script th:replace="partials/partials :: bootstrap-footer"></script>-->
+<h2>Why use Politician Trades Tracker?</h2>
+<p>There are several reasons why individuals may choose to use Politician Trades Tracker:</p>
+<ul>
+    <li>To stay informed on the latest stock market activity of politicians in the US Congress.</li>
+    <li>To monitor the trading activity of politicians who may have an impact on the economy.</li>
+    <li>To learn more about investing in the stock market and how politicians may influence market trends.</li>
+</ul>
+
+<h2>How does Politician Trades Tracker work?</h2>
+<p>Politician Trades Tracker uses publicly available data to track the stock market activity of politicians in the US Congress. The application provides real-time updates on trades made by politicians, including the type of stock, the number of shares traded, and the date of the transaction. Users can search for specific politicians or view the latest trades made by all politicians.</p>
+
+<h2>Who can use Politician Trades Tracker?</h2>
+<p>Politician Trades Tracker is available to anyone who wants to stay informed on the stock market activity of politicians in the US Congress. The application is designed to be user-friendly and accessible to individuals of all experience levels.</p>
+
+<h2>Get started with Politician Trades Tracker</h2>
+<p>To get started with Politician Trades Tracker, simply create an account on our website. Once you have an account, you can start monitoring the latest trades made by politicians in the US Congress.</p>
+
+<footer th:replace="partials/partials :: footer"></footer>
+<script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>
 </html>

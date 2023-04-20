@@ -163,11 +163,11 @@ body {
     /*height: 100vh;*/
     flex-wrap: wrap;
 }
-.container>div {
+/*.container>div {*/
 
-    width: 33%;
+/*    width: 33%;*/
 
-}
+/*}*/
 .date {
     color: #eee;
     font-family: "Courier New", Courier, monospace;

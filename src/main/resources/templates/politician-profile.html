@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <title>Politician Profile</title>
-    <link rel="stylesheet" href="/CSS/main.css">
+
     <link th:replace="partials/partials :: bootstrap">
     <link rel="stylesheet" href="/CSS/views/politician-profile.css">
+    <link rel="stylesheet" href="/CSS/main.css">
 </head>
 <body>
 <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
