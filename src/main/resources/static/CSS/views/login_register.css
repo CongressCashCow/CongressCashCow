@@ -1,5 +1,53 @@
-body {
+* {
+    font-family: "lexend", "Tahoma", sans-serif;
+}
+a {
+    all: unset;
+}
+/*html{*/
+/*    height: 100%;*/
+/*}*/
+/*body {*/
+
+/*}*/
+
+@media only screen and (max-width: 2599px) {
+
+}
+@media only screen and (min-width: 2600px) {
+    .background{
+        padding: 0 15%;
+    }
+}
+.background{
+
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10em;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: rgb(10,16,49);
     background: linear-gradient(180deg, rgba(10,16,49,1) 0%, rgba(36,10,96,1) 41%, rgba(45,38,150,1) 84%, rgba(203,109,109,1) 100%);
+
+}
+
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+img, svg {
+    width: 2em !important;
+    height: auto !important;
 }
 
 .card {
@@ -36,4 +84,35 @@ a {
 a:hover {
     color: #000;
     text-decoration: underline;
+}
+
+.testfooter{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 10em;
+    flex-direction: column;
+
+}
+.footer-field{
+    position: absolute;
+    /*background-image: url("yard.png");*/
+    /*background-size: cover;*/
+    width: 100%;
+    height: 100%;
+    bottom: 100%;
+}
+.footer-cow{
+    /*background-image: url("cow.png");*/
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: 180%;
+    right: 25%;
+}
+.footer-main{
+    width: 100%;
+    height: 100%;
+    /*color: #eeeeee;*/
+    background: #378530;
 }
