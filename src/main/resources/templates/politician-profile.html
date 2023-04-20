@@ -38,6 +38,7 @@
                         <th>Type of Sale</th>
                         <th>Transaction Date</th>
                         <th>Date Reported</th>
+
                     </tr>
                     </thead>
 
@@ -47,6 +48,7 @@
                         <td th:text="${trade.getRange()}"></td>
                         <td th:text="${trade.getTransactionType()}"></td>
                         <td th:text="${trade.getDate}"></td>
+                        <td th:text="${trade.getReportedDate()}"></td>
                     </tr>
                     </tbody>
                 </table>
