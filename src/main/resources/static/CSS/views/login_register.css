@@ -1,11 +1,12 @@
 body {
-    background-color: #f5f5f5;
+    background: linear-gradient(180deg, rgba(10,16,49,1) 0%, rgba(36,10,96,1) 41%, rgba(45,38,150,1) 84%, rgba(203,109,109,1) 100%);
 }
 
 .card {
     border: none;
     border-radius: 1rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
 }
 
 .card-title {
