@@ -30,15 +30,20 @@ public class PoliticianProfileController {
     }
 
     @GetMapping("/politician-profile")
-    public String politicianProfilePage(Model model) {
+    public String politicianProfilePage(Model model, @RequestParam(required = false,value="pol") String searchQuery) {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User fixedUser = userDAO.findById(currentUser.getId()).get();
 
-        List<Trade> trades = api.getTrades();
-        List<Trade> polTrades = new ArrayList<>();
+        List<Trade> polTrades;
+        Politician p;
+        if(searchQuery != null && searchQuery.trim().length() > 0){
+            System.out.println(searchQuery);
+            p = politicianDAO.findByName(searchQuery);
+        }else{
+            p = politicianDAO.findByName("Virginia Foxx");
+        }
 
-        Politician p = politicianDAO.findByName("Virginia Foxx");
 
         polTrades = api.getPoliticianTrades(p.getName());
         if(fixedUser.getPoliticians().contains(p)) {
