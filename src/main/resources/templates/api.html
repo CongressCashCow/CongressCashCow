@@ -109,11 +109,13 @@
 <!--    -->
 <!--</div>-->
 </div>
-<footer class="testfooter">
-<!--    <div class="footer-field"></div>-->
-    <img class="footer-field" src="/images/yard.png" alt="grass">
-    <img class="footer-cow" src="/images/cow.png" alt="cow">
-    <div class="footer-main">this is a footer</div>
-</footer>
+<footer th:replace="~{partials/partials :: footer}"></footer>
+<script th:replace="~{partials/partials :: bootstrap-footer}"></script>
+<!--<footer class="testfooter">-->
+<!--&lt;!&ndash;    <div class="footer-field"></div>&ndash;&gt;-->
+<!--    <img class="footer-field" src="/images/yard.png" alt="grass">-->
+<!--    <img class="footer-cow" src="/images/cow.png" alt="cow">-->
+<!--    <div class="footer-main">this is a footer</div>-->
+<!--</footer>-->
 </body>
 </html>
