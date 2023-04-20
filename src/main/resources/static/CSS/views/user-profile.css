@@ -1,16 +1,67 @@
+/* User Profile Section */
+#user-profile-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
 
-.avatar {
-    width: 100%;
+#user-profile-section .user-profile-card {
+    width: 300px;
+    margin-right: 50px;
 }
-.politician-card {
-    width: 100%;
-    max-width: 500px;
-}
-.politician-card img {
+
+#user-profile-section .user-profile-card img {
     max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
+#user-profile-section .user-profile-card h5 {
+    margin-bottom: 10px;
+}
 
+#user-profile-section .user-profile-card p {
+    margin-bottom: 20px;
+}
 
+#user-profile-section .user-profile-card button {
+    margin-right: 10px;
+}
 
+/* Politician Cards Section */
+#politician-cards-section {
+    width: 100%;
+    overflow-x: auto;
+}
 
+#politician-cards-section .politician-card {
+    display: inline-block;
+    width: 300px;
+    margin-right: 20px;
+}
+
+#politician-cards-section .politician-card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#politician-cards-section .politician-card h5 {
+    margin-bottom: 10px;
+}
+
+#politician-cards-section .politician-card p {
+    margin-bottom: 20px;
+}
+
+/* Buttons Section */
+#buttons-section {
+    margin-top: 20px;
+}
+
+#buttons-section button {
+    margin-right: 10px;
+}
