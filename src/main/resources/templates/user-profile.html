@@ -30,32 +30,37 @@
         </div>
         <div class="col-md-8">
             <div class="scrollable">
-                <div class="row">
-                    <!-- Politician cards -->
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <img src="[Politician Avatar URL]" alt="[Politician Name]'s avatar" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">[Politician Name]</h5>
-                                <p class="card-text">[Latest Stock Trade Ticker Name]</p>
-                            </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>User Profile</h1>
+
+                            <h2>Followed Politicians</h2>
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Party</th>
+                                    <th>State</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="pol: ${followedPoliticians}">
+                                    <td th:text="${pol.getName()}"></td>
+                                    <td th:text="${pol.getLatestTrade()}"></td>
+                                    <td th:text="${pol.getTrades()}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
-                    <!-- Repeat politician cards for each favorite -->
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <img src="[Politician Avatar URL]" alt="[Politician Name]'s avatar" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">[Politician Name]</h5>
-                                <p class="card-text">[Latest Stock Trade Ticker Name]</p>
-                            </div>
-                        </div>
-                    </div>
+                </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>
