@@ -8,31 +8,36 @@
 </head>
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
+<div class="background p-4">
+  <div class="trades-top">
 <form class="m-0" id="search-form" action="/trades">
 
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search zen-search-icon" viewBox="0 0 16 16">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#eeeeee" class="bi bi-search zen-search-icon" viewBox="0 0 16 16">
     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
   </svg>
 
   <input id="tradesearchbar" name="searchbar" type="text" placeholder="Search Trades...">
 
 </form>
-<h1 class="ticker" th:text="${trades.size()}"></h1>
+<h1 class="trade-results" th:text="${trades.size() + ' Results'}"></h1>
+  </div>
 <div th:if="${trades.size() > 0}">
   <div th:each="trade : ${trades}">
     <div>
       <span class="ticker" th:text="${trade.ticker}"></span>
-      <span th:text="${trade.transactionType}"></span>
-      <span th:text="${trade.range}"></span>
-      <span th:text="${trade.politician.name}"></span>
-      <span th:text="${trade.date}"></span>
-      <span th:text="${trade.reportedDate}"></span>
+      <span class="trade-text" th:text="${trade.transactionType}"></span>
+      <span class="trade-text" th:text="${trade.range}"></span>
+      <span class="trade-text" th:text="${trade.politician.name}"></span>
+      <span class="trade-text" th:text="${trade.date}"></span>
+      <span class="trade-text" th:text="${trade.reportedDate}"></span>
     </div>
   </div>
 </div>
 <div th:unless="${trades.size() > 0}">
-  <h1 class="ticker">No results..........</h1>
+  <h1 class="ticker">No results...</h1>
 </div>
-
+</div>
+<footer th:replace="partials/partials :: footer"></footer>
+<script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>
 </html>

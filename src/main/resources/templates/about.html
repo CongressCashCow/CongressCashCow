@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <link th:replace="partials/partials :: bootstrap">
-<link rel="stylesheet" href="/CSS/views/user-profile.css">
-<link rel="stylesheet" href="/CSS/views/about.css">
+<!--<link rel="stylesheet" href="/CSS/views/user-profile.css">-->
+<link rel="stylesheet" href="CSS/main.css">
+<!--<link rel="stylesheet" href="/CSS/views/about.css">-->
 
 <head>
     <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
@@ -13,7 +14,7 @@
 </head>
 <body>
 
-<div class="container py-5 background">
+<div class="about background">
     <h1>About Milk-Money</h1>
     <p>Keeping track of the stock market activity can be a daunting task for the average person, especially for beginners. The Milk-Money application was created to make it easier for individuals to stay up-to-date on the latest hot trades made by politicians in the US Congress.</p>
 
