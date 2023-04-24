@@ -43,7 +43,7 @@
                                 <div class="type" th:text="${trade.getTransactionType()}"></div>
                             </div>
                         </div>
-                        <form th:action="@{/politicians/recent}" th:method="POST">
+                        <form th:action="@{/index}" th:method="POST">
                             <button th:if="${names?.contains(trade.politician?.getName())}" name="follow-btn"
                                     th:value="${false}" type="submit" class="unfollow-btn">Unfollow
                             </button>
@@ -70,7 +70,7 @@
                         <div class="fcc-2"></div>
                         <div class="fcc-3"></div>
                     </div>
-                    <div class="card">
+                    <div class="card-milk">
                         <div class="date" th:text="${trade.getDate()}"></div>
                         <div class="card-top">
                             <img class="img blur" th:src="${trade.getPolitician().getImageURL()}">

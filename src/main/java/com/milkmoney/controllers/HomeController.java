@@ -13,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,6 +128,30 @@ public class HomeController {
 
         return "index-user";
 
+    }
+    @PostMapping("/index")
+    public String addFavorite(@RequestParam("pol_id") String name, @RequestParam("follow-btn") boolean follow) {
+
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User fixedUser = userDAO.findById(currentUser.getId()).get();
+        boolean isPresent = false;
+        if(follow){
+            for(Politician p : fixedUser.getPoliticians()){
+                if(p.getName().equals(name)){
+                    isPresent = true;
+                    break;
+                }
+            }
+            if(!isPresent){
+                fixedUser.addPolitician(politicianDAO.findByName(name));
+                userDAO.save(fixedUser);
+            }
+        }else{
+            fixedUser.removePolitician(politicianDAO.findByName(name));
+            userDAO.save(fixedUser);
+        }
+
+        return "redirect:/index";
     }
 }
 
