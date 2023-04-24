@@ -4,7 +4,7 @@
     <!--        <link rel="stylesheet" href="/CSS/views/index-user.css">-->
     <meta charset="UTF-8">
     <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-    <title>Index User</title>
+    <title>Milk Money</title>
     <script th:replace="partials/partials :: bootstrap"></script>
     <link rel="stylesheet" href="/CSS/main.css">
 
@@ -33,11 +33,13 @@
                         <div class="date" th:text="${trade.getDate()}"></div>
                         <div class="card-top">
                             <img class="img" th:src="${trade.getPolitician().getImageURL()}">
-                            <div class="name" th:text="${trade.getPolitician().name}"></div>
+                            <div>
+                                <a class="name" th:href="@{'/politician-profile?pol=' + ${trade.getPolitician().name}}" th:text="${trade.getPolitician().name}"></a>
+                            </div>
                         </div>
                         <div class="card-hr"></div>
                         <div class="card-bot">
-                            <div class="ticker" th:text="${trade.getTicker()}"></div>
+                            <a class="ticker" th:href="@{'/trades?searchbar=' + ${trade.getTicker()}}" th:text="${trade.getTicker()}"></a>
                             <div class="card-bot-right">
                                 <div class="range" th:text="${trade.getRange()}"></div>
                                 <div class="type" th:text="${trade.getTransactionType()}"></div>
@@ -89,7 +91,7 @@
                         <div class="wave-clip">
                             <div class="milk-wave"></div>
                         </div>
-                        <div class="milk"><a class="d-flex justify-content-center " href="/login">Sign In to View!</a></div>
+                        <div class="milk"><a class="d-flex justify-content-center sign-in-prompt" href="/login">Sign In to View!</a></div>
                     </div>
                     <div class="carton"></div>
                 </div>
