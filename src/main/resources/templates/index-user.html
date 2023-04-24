@@ -20,7 +20,7 @@
     </div>
 
     <!-- Politician Specific Page -->
-        <h1 >Top 20 Trades</h1>
+
         <div class="container c-cus">
             <div sec:authorize="isAuthenticated()" th:each="trade : ${trades}">
                 <div class="card-container">
@@ -45,11 +45,11 @@
                         </div>
                         <form th:action="@{/index}" th:method="POST">
                             <button th:if="${names?.contains(trade.politician?.getName())}" name="follow-btn"
-                                    th:value="${false}" type="submit" class="unfollow-btn">Unfollow
+                                    th:value="${false}" type="submit" class="unfollow-btn mb-4">Unfollow
                             </button>
                             <input type="hidden" id="pol_id" name="pol_id" th:value="${trade.politician.getName()}">
                             <button th:unless="${names?.contains(trade.politician?.getName())}" name="follow-btn"
-                                    th:value="${true}" type="submit" class="follow-btn">Follow
+                                    th:value="${true}" type="submit" class="follow-btn mb-4">Follow
                             </button>
                         </form>
                     </div>
@@ -65,7 +65,7 @@
             </div>
             <div sec:authorize="isAnonymous()" th:each="trade : ${trades}">
                 <div class="card-container">
-                    <div class="fake-carton-container">
+                    <div class="fake-carton-container bg-dark">
                         <div class="fcc-1"></div>
                         <div class="fcc-2"></div>
                         <div class="fcc-3"></div>
@@ -89,7 +89,7 @@
                         <div class="wave-clip">
                             <div class="milk-wave"></div>
                         </div>
-                        <div class="milk"></div>
+                        <div class="milk"><a class="d-flex justify-content-center " href="/login">Sign In to View!</a></div>
                     </div>
                     <div class="carton"></div>
                 </div>

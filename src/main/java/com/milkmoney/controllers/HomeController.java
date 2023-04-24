@@ -14,7 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestParam;
+=======
+>>>>>>> main
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,6 +132,7 @@ public class HomeController {
         return "index-user";
 
     }
+<<<<<<< HEAD
     @PostMapping("/index")
     public String addFavorite(@RequestParam("pol_id") String name, @RequestParam("follow-btn") boolean follow) {
 
@@ -153,6 +157,13 @@ public class HomeController {
 
         return "redirect:/index";
     }
+=======
+
+//    @PostMapping("/index")
+//    public String returnUser(){
+//        return "redirect:/";
+//    }
+>>>>>>> main
 }
 
 
