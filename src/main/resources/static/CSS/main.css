@@ -353,8 +353,9 @@ color: #222;
     /*color: var(--dk-brown);*/
     /*border-color: var(--dk-brown);*/
     color: #eee;
-    border-radius: 20px;
+    /*border-radius: 20px;*/
     padding: 0 0.5em 0 0.5em;
+    border: none;
 }
 
 #tradesearchbar{
@@ -497,4 +498,16 @@ width: 100%;
 .mtt-email{
     width: 100%;
     text-align: center;
+}
+.nav-search-container{
+    border: solid 1px #333;
+    border-radius: 20px;
+}
+#searchtype{
+    border: none;
+    border-right: solid 1px #333;
+    padding-left: 0.5em;
+    color: #eee;
+    background-color: transparent;
+    /*border: none;*/
 }
