@@ -51,7 +51,7 @@ public class SecurityConfiguration {
                 .authenticated()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers( "/register", "/meet-the-team", "/login", "/index", "/about", "/CSS/**", "/templates/**", "/images/**", "/api", "/api/recent",  "/") // anyone can see home, the ads pages, and sign up
+                .requestMatchers( "/register", "/meet-the-team", "/login", "/index", "/about", "/CSS/**", "/templates/**", "/images/**", "/politicians", "/politicians/recent",  "/") // anyone can see home, the ads pages, and sign up
                 .permitAll()
 
 

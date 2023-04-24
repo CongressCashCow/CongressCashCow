@@ -35,10 +35,10 @@ public class PoliticianController {
 
     public String update(){
         savePols();
-        return "redirect:/api";
+        return "redirect:/politicians";
     }
 
-    @GetMapping("/api")
+    @GetMapping("/politicians")
     public String apiView(Authentication authentication, Model model, @RequestParam(required = false,value="searchbar") String searchQuery) {
         Set<Politician> pols = api.getPoliticians();
         Set<Politician> searchPols = new HashSet<>();
@@ -96,7 +96,7 @@ public class PoliticianController {
         return "api";
     }
 
-    @GetMapping("/api/recent")
+    @GetMapping("/politicians/recent")
     public String apiRecent(Authentication authentication, Model model) {
 //        String searchQuery = model.getAttribute("searchbar").toString();
 
@@ -138,7 +138,7 @@ public class PoliticianController {
 
         return "apirecent";
     }
-    @PostMapping("/api/recent")
+    @PostMapping("/politicians/recent")
     public String addFavorite(@RequestParam("pol_id") String name,@RequestParam("follow-btn") boolean follow) {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -160,7 +160,7 @@ public class PoliticianController {
             userDAO.save(fixedUser);
         }
 
-        return "redirect:/api/recent";
+        return "redirect:/politicians/recent";
     }
 
     public void savePols(){

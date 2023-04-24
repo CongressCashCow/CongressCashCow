@@ -5,10 +5,11 @@
     <title>User Profile</title>
     <link th:replace="partials/partials :: bootstrap">
     <link rel="stylesheet" href="/CSS/views/user-profile.css">
+    <link rel="stylesheet" href="CSS/main.css">
 </head>
 <body>
 <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
-<div class="container vh-100">
+<div class="user-profile background">
     <!-- Profile Page -->
     <div class="row">
         <div class="col-md-4 mb-4">
@@ -37,7 +38,7 @@
 
                             <h2>Followed Politicians</h2>
 
-                            <table class="table table-striped">
+                            <table class="table">
                                 <thead>
                                 <tr>
                                     <th>Name</th>

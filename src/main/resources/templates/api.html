@@ -4,12 +4,12 @@
     <script th:replace="partials/partials :: bootstrap"></script>
     <link rel="stylesheet" href="CSS/main.css">
     <meta charset="UTF-8">
-    <title>API</title>
+    <title>Politicians</title>
 </head>
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 <div class="background">
-<h1>api testing</h1>
+<!--<h1>api testing</h1>-->
 <div class="container c-cus">
         <div sec:authorize="isAuthenticated()" th:each="pol : ${pols}" >
             <div class="card-container">
@@ -24,7 +24,7 @@
                         <img class="img" th:src="${pol.getImageURL()}">
                         <div>
                         <a class="name" th:href="@{'/politician-profile?pol=' + ${pol.name}}" th:text="${pol.name}"></a>
-                        <div th:text="${pol.getTradeCount()}"></div>
+<!--                        <div th:text="${pol.getTradeCount()}"></div>-->
 <!--                        <div th:text="${pol.getTotals()[0]}"></div>-->
 <!--                        <div th:text="${pol.getTotals()[1]}"></div>-->
 <!--                        <div th:text="${pol.getTotals()[2]}"></div>-->
@@ -40,7 +40,7 @@
                                 <div class="range" th:text="${pol.getLatestTrade()?.getRange()}"></div>
                                 <div class="type" th:text="${pol.getLatestTrade()?.getTransactionType()}"></div>
                             </div>
-                            <form th:action="@{/api/recent}" th:method="POST" >
+                            <form th:action="@{/politicians/recent}" th:method="POST" >
                                 <button th:if="${names?.contains(pol.getName())}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn">Unfollow</button>
                                 <input type="hidden" id="pol_id" name="pol_id" th:value="${pol.getName()}">
                                 <button th:unless="${names?.contains(pol.getName())}" name="follow-btn" th:value="${true}" type="submit" class="follow-btn">Follow</button>

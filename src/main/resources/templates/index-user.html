@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="/CSS/main.css">
 
 </head>
-<body class="background">
+<body >
 <nav th:replace="~{partials/partials :: navbar}"></nav>
-<div class="page-wrapper">
+<div class="page-wrapper background">
     <div class=" top-img extend">
         <div>
             <h1 class=" top-img-banner">Unleash the power of insider trading...without actually breaking the law.</h1>
@@ -43,7 +43,7 @@
                                 <div class="type" th:text="${trade.getTransactionType()}"></div>
                             </div>
                         </div>
-                        <form th:action="@{/api/recent}" th:method="POST">
+                        <form th:action="@{/politicians/recent}" th:method="POST">
                             <button th:if="${names?.contains(trade.politician?.getName())}" name="follow-btn"
                                     th:value="${false}" type="submit" class="unfollow-btn">Unfollow
                             </button>

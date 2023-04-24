@@ -4,7 +4,7 @@
     <script th:replace="partials/partials :: bootstrap"></script>
     <link rel="stylesheet" href="/CSS/main.css">
     <meta charset="UTF-8">
-    <title>API Recent</title>
+    <title>Recent Trades</title>
 </head>
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
@@ -41,7 +41,7 @@
                     <!--        <div th:each="mypol : ${#authentication.principal.politicians}">-->
                     <!--          <div th:text="${mypol.name}"></div>-->
                     <!--          </div>-->
-                    <form th:action="@{/api/recent}" th:method="POST">
+                    <form th:action="@{/politicians/recent}" th:method="POST">
                         <button th:if="${names?.contains(trade.politician?.getName())}" name="follow-btn"
                                 th:value="${false}" type="submit" class="unfollow-btn">Unfollow
                         </button>
@@ -55,7 +55,7 @@
                 <div class="milk-container">
                     <div class="wave-clip">
                         <div class="milk-wave"></div>
-                    </div>
+<!--                    </div>-->
                     <div class="milk"></div>
                 </div>
                 <div class="carton"></div>

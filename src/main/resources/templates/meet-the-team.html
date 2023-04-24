@@ -2,19 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <script th:replace="partials/partials :: bootstrap"></script>
+    <link rel="stylesheet" href="CSS/main.css">
     <link rel="stylesheet" href="/CSS/views/meet-the-team.css">
     <meta charset="UTF-8">
     <title>Meet the team</title>
 </head>
 <body>
 <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
-<div class="about-section">
-    <h1>About Us Page</h1>
-    <p>Some text about who we are and what we do.</p>
-    <p>Resize the browser window to see that this page is responsive by the way.</p>
-</div>
+<div class="background">
+<!--<div class="about-section">-->
+<!--    <h1>About Us Page</h1>-->
+<!--    <p>Some text about who we are and what we do.</p>-->
+<!--    <p>Resize the browser window to see that this page is responsive by the way.</p>-->
+<!--</div>-->
 
-<h2 style="text-align:center">Our Team</h2>
+<h2 class="our-team">Our Team</h2>
 <div class="row">
     <div class="column">
         <div class="card">
@@ -68,7 +70,7 @@
         </div>
     </div>
 </div>
-
+</div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
 </body>

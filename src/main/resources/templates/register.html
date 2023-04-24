@@ -5,16 +5,17 @@
     <title>Register</title>
     <link th:replace="~{partials/partials :: bootstrap}">
     <link rel="stylesheet" href="/static/CSS/partials/navbar-user.css">
-    <link rel="stylesheet" href="/CSS/views/login_register.css">
+<!--    <link rel="stylesheet" href="/CSS/views/login_register.css">-->
+    <link rel="stylesheet" href="CSS/main.css">
 </head>
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 
-<div class="container vh-100">
+<div class="background">
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8">
-            <div class="card mt-5">
-                <div class="card-body">
+            <div class="zen-login-maincard mt-5">
+                <div class="zen-login-card">
                     <h3 class="card-title text-center mb-4">Create an account</h3>
                     <form th:action="@{/register}" method="POST" th:object="${user}">
                         <div class="form-group">
@@ -29,10 +30,11 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Create account</button>
+                        <button type="submit" class="login-btn">Create account</button>
                         <hr>
-                        <p class="text-center">Already have an account? <a href="/login">Login!</a></p>
+
                     </form>
+                    <p class="text-center">Already have an account? <a href="/login">Login!</a></p>
                 </div>
             </div>
         </div>
