@@ -39,23 +39,30 @@ public class PoliticianController {
     }
 
     @GetMapping("/politicians")
-    public String apiView(Authentication authentication, Model model, @RequestParam(required = false,value="searchbar") String searchQuery) {
+    public String apiView(Authentication authentication, Model model, @RequestParam(required = false,value="searchbar") String searchQuery, @RequestParam(required = false,value="searchtype") String searchType ) {
+        System.out.println(searchType);
         Set<Politician> pols = api.getPoliticians();
         Set<Politician> searchPols = new HashSet<>();
         int limit = 20;
         boolean isLimited = false;
         System.out.println(pols.size());
+        if(searchType != null && searchType.equals("stock")){
+            String path = String.format("redirect:/trades?searchbar=%S",searchQuery);
+            return path;
+        }else{
+            if(searchQuery != null && searchQuery.trim().length() > 0){
+                System.out.println(searchQuery);
 
-        if(searchQuery != null && searchQuery.trim().length() > 0){
-            System.out.println(searchQuery);
-            for(Politician p : politicianDAO.findByNameContaining(searchQuery)){
-                for(Politician pol : pols){
-                    if (pol.getName().equals(p.getName())){
-                        searchPols.add(pol);
+                for(Politician p : politicianDAO.findByNameContaining(searchQuery)){
+                    for(Politician pol : pols){
+                        if (pol.getName().equals(p.getName())){
+                            searchPols.add(pol);
+                        }
                     }
                 }
             }
         }
+
         for(Politician p : searchPols){
             System.out.println(p.getName());
         }
