@@ -48,8 +48,9 @@
                                 <tbody>
                                 <tr th:each="pol: ${followedPoliticians}">
                                     <td th:text="${pol.getName()}"></td>
-                                    <td th:text="${pol.getLatestTrade()}"></td>
-                                    <td th:text="${pol.getTrades()}"></td>
+                                    <td th:text="${pol.getLatestTrade()?.getTicker()}"></td>
+                                    <td><form th:action="@{/user-profile}" th:method="POST" >
+                                        <input type="hidden" id="pol_id" name="pol_id" th:value="${pol.getName()}"><button  name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn">Unfollow</button></form></td>
                                 </tr>
                                 </tbody>
                             </table>
