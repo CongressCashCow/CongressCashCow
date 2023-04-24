@@ -130,6 +130,12 @@ body {
     width: 20%;
     border-radius: 0.1em;
 }
+.gs{
+    filter: grayscale(1);
+}
+.zen-ps-fixed{
+    position: fixed;
+}
 .name {
     color: #eee;
     margin-left: 0.5em;
@@ -184,7 +190,7 @@ body {
     margin: 5% 11%  0 auto;
 }
 .ticker {
-    color: #1b7c3a;
+    color: #31d761;
     font-size: 4vw;
     font-weight: lighter;
 }
@@ -274,8 +280,12 @@ body {
 .type{
     transition: color 1s;
     color: #eee;}
-.card-container:hover .name, .card-container:hover .range, .card-container:hover .type{
+.card-container:hover .name, .card-container:hover .range, .card-container:hover .type, .card-container:hover .sign-in-prompt{
 color: #222;
+}
+.sign-in-prompt{
+    color: transparent;
+    transition: color 1s;
 }
 .card-container:hover .milk-container {
     height: 100%;
@@ -455,4 +465,36 @@ tbody>tr:nth-of-type(odd)>*{
 }
 h1,h2{
     color: #eee;
+}
+a:hover{
+    cursor: pointer;
+}
+
+.card-avatar{
+    border: solid 1px #333;
+    background-color: rgba(238, 238, 238, 0.12);
+    padding: 1em;
+    border-radius: 1em;
+    color: #eee;
+}
+.profile-table{
+    width: 90%;
+}
+.w-23{
+    width: 23%;
+}
+.zen-row{
+    display: flex;
+    justify-content: space-evenly;
+}
+.mtt-fs{
+    font-size: 1.7em;
+}
+.mtt-img{
+width: 100%;
+    aspect-ratio: 1 / 1;
+}
+.mtt-email{
+    width: 100%;
+    text-align: center;
 }

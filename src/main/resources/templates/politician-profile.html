@@ -4,20 +4,21 @@
     <title>Politician Profile</title>
 
     <link th:replace="partials/partials :: bootstrap">
-    <link rel="stylesheet" href="/CSS/views/politician-profile.css">
+<!--    <link rel="stylesheet" href="/CSS/views/politician-profile.css">-->
     <link rel="stylesheet" href="/CSS/main.css">
 </head>
 <body>
 <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
-<div class="container">
+<div class="user-profile background">
     <div class="row">
-        <div class="col-md-6">
-            <h1>Politician Profile</h1>
+        <div class="col-md-4 mb-4  d-flex justify-content-center">
+<!--            <h1>Politician Profile</h1>-->
 
-            <div class="card">
-                <img th:src="${pol?.getImageURL()}" alt="Politician Photo" class="card-img-top p-pic">
-                <div class="card-body">
+            <div class="card-avatar zen-ps-fixed d-flex flex-column w-25">
+                <img th:src="${pol?.getImageURL()}" alt="Politician Photo" class="gs card-img-top p-pic">
+                <div class="card-body d-flex flex-column align-items-center">
                     <h2 class="card-title" th:text="${pol?.getName}">Politician Name</h2>
+                    <div th:text="${pol.getTradeCount()} + ' Total Trades'"></div>
                     <div class="d-grid gap-2">
                         <form th:action="@{/politician-profile}" th:method="POST" >
                             <button th:if="${follow}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn btn btn-primary">Unfollow</button>
@@ -28,9 +29,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="table-wrapper">
-                <table class="table table-striped">
+        <div class="col-md-8">
+            <div class="scrollable">
+                <div class="container">
+                    <div class="w-100">
+                        <div class="col-md-12">
+                <table class="table profile-table">
                     <thead>
                     <tr>
                         <th>Ticker</th>
@@ -52,7 +56,10 @@
                     </tr>
                     </tbody>
                 </table>
-            </div>
+                </div>
+                    </div>
+                </div>
+                </div>
 
         </div>
     </div>

@@ -13,13 +13,13 @@
     <!-- Profile Page -->
     <div class="row">
         <div class="col-md-4 mb-4">
-            <div class="card">
+            <div class="card-avatar zen-ps-fixed ">
                 <img src="/images/nando.png" alt="[User Name]'s avatar" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">[User Name]</h5>
-                    <p class="card-text">[User Email]</p>
+                    <h5 class="card-title" th:text="${user?.getUsername()}">[User Name]</h5>
+                    <p class="card-text" th:text="${user?.getEmail()}">[User Email]</p>
                     <div class="d-flex flex-column">
-                        <a href="#" class="btn btn-primary mb-2">Edit Profile</a>
+                        <a href="#" class="login-btn px-1">Edit Profile</a>
 
                     </div>
                 </div>
@@ -28,13 +28,12 @@
         <div class="col-md-8">
             <div class="scrollable">
                 <div class="container">
-                    <div class="row">
+                    <div class="w-100">
                         <div class="col-md-12">
-                            <h1>User Profile</h1>
 
                             <h2>Followed Politicians</h2>
 
-                            <table class="table">
+                            <table class="table profile-table">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
@@ -44,8 +43,10 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="pol: ${followedPoliticians}">
-                                    <td th:text="${pol.getName()}"></td>
-                                    <td th:text="${pol.getLatestTrade()?.getTicker()}"></td>
+                                    <td><a th:href="@{'/politician-profile?pol=' + ${pol.getName()}}" th:text="${pol.getName()}"></a></td>
+<!--                                    <td th:text="${pol.getName()}"></td>-->
+                                    <td><a th:href="@{'/trades?searchbar=' + ${pol.getLatestTrade()?.getTicker()}}" th:text="${pol.getLatestTrade()?.getTicker()}"></a></td>
+<!--                                    <td th:text="${pol.getLatestTrade()?.getTicker()}"></td>-->
                                     <td><form th:action="@{/user-profile}" th:method="POST" >
                                         <input type="hidden" id="pol_id" name="pol_id" th:value="${pol.getName()}"><button  name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn">Unfollow</button></form></td>
                                 </tr>
