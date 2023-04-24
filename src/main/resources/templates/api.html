@@ -9,7 +9,6 @@
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 <div class="background">
-<!--<h1>api testing</h1>-->
 <div class="container c-cus">
         <div sec:authorize="isAuthenticated()" th:each="pol : ${pols}" >
             <div class="card-container">
@@ -24,7 +23,9 @@
                         <img class="img" th:src="${pol.getImageURL()}">
                         <div>
                         <a class="name" th:href="@{'/politician-profile?pol=' + ${pol.name}}" th:text="${pol.name}"></a>
+
 <!--                        <div th:text="${pol.getTradeCount()}"></div>-->
+
 <!--                        <div th:text="${pol.getTotals()[0]}"></div>-->
 <!--                        <div th:text="${pol.getTotals()[1]}"></div>-->
 <!--                        <div th:text="${pol.getTotals()[2]}"></div>-->

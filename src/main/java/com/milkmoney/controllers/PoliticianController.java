@@ -161,6 +161,7 @@ public class PoliticianController {
         }
 
         return "redirect:/politicians/recent";
+
     }
 
     public void savePols(){
