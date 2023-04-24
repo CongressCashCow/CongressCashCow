@@ -178,7 +178,7 @@ body {
     margin: 5% 11%  0 auto;
 }
 .ticker {
-    color: #00ff59;
+    color: #1b7c3a;
     font-size: 4vw;
     font-weight: lighter;
 }
@@ -294,9 +294,9 @@ color: #222;
 .follow-btn{
     /*padding: 0.5em;*/
     /*margin: 0 10% 0 auto;*/
-    color: #00ff59;
+    color: #1b7c3a;
     background-color: transparent;
-    border: solid 2px #00ff59;
+    border: solid 2px #31d761;
     border-radius: 1em;
     transition: all 1s;
 }
@@ -314,8 +314,8 @@ color: #222;
     border: solid 2px #d05353;
 }
 .follow-btn:hover{
-    color: #48b46d;
-    border: solid 2px #48b46d;
+    color: #3a91c5;
+    border: solid 2px #3a91c5;
 }
 #search-form{
     position: relative;

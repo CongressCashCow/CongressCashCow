@@ -45,11 +45,11 @@
                         </div>
                         <form th:action="@{/api/recent}" th:method="POST">
                             <button th:if="${names?.contains(trade.politician?.getName())}" name="follow-btn"
-                                    th:value="${false}" type="submit" class="unfollow-btn">Unfollow
+                                    th:value="${false}" type="submit" class="unfollow-btn mb-4">Unfollow
                             </button>
                             <input type="hidden" id="pol_id" name="pol_id" th:value="${trade.politician.getName()}">
                             <button th:unless="${names?.contains(trade.politician?.getName())}" name="follow-btn"
-                                    th:value="${true}" type="submit" class="follow-btn">Follow
+                                    th:value="${true}" type="submit" class="follow-btn mb-4">Follow
                             </button>
                         </form>
                     </div>

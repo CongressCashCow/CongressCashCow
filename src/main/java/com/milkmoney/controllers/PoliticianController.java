@@ -160,7 +160,7 @@ public class PoliticianController {
             userDAO.save(fixedUser);
         }
 
-        return "redirect:/api/recent";
+        return "redirect:/api";
     }
 
     public void savePols(){
