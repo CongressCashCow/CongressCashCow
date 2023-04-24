@@ -41,7 +41,7 @@
                                 <div class="range" th:text="${pol.getLatestTrade()?.getRange()}"></div>
                                 <div class="type" th:text="${pol.getLatestTrade()?.getTransactionType()}"></div>
                             </div>
-                            <form th:action="@{/politicians/recent}" th:method="POST" >
+                            <form th:action="@{/politicians}" th:method="POST" >
                                 <button th:if="${names?.contains(pol.getName())}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn">Unfollow</button>
                                 <input type="hidden" id="pol_id" name="pol_id" th:value="${pol.getName()}">
                                 <button th:unless="${names?.contains(pol.getName())}" name="follow-btn" th:value="${true}" type="submit" class="follow-btn">Follow</button>

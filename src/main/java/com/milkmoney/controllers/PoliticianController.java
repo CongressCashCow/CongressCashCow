@@ -138,7 +138,7 @@ public class PoliticianController {
 
         return "apirecent";
     }
-    @PostMapping("/politicians/recent")
+    @PostMapping("/politicians")
     public String addFavorite(@RequestParam("pol_id") String name,@RequestParam("follow-btn") boolean follow) {
 
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -160,7 +160,8 @@ public class PoliticianController {
             userDAO.save(fixedUser);
         }
 
-        return "redirect:/politicians/recent";
+
+        return "redirect:/politicians";
 
     }
 
