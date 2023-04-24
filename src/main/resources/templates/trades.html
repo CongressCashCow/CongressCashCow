@@ -21,21 +21,39 @@
 </form>
 <h1 class="trade-results" th:text="${trades.size() + ' Results'}"></h1>
   </div>
-<div th:if="${trades.size() > 0}">
-  <div th:each="trade : ${trades}">
-    <div>
-      <span class="ticker" th:text="${trade.ticker}"></span>
-      <span class="trade-text" th:text="${trade.transactionType}"></span>
-      <span class="trade-text" th:text="${trade.range}"></span>
-      <span class="trade-text" th:text="${trade.politician.name}"></span>
-      <span class="trade-text" th:text="${trade.date}"></span>
-      <span class="trade-text" th:text="${trade.reportedDate}"></span>
-    </div>
-  </div>
-</div>
+
+
+  <div th:if="${trades.size() > 0}">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Ticker</th>
+      <th>Transaction Type</th>
+      <th>Trade Range</th>
+      <th>Politician Name</th>
+      <th>Trade Date</th>
+      <th>Reported Date</th>
+    </tr>
+    </thead>
+    <tbody>
+
+      <tr th:each="trade : ${trades}">
+
+          <td th:text="${trade.ticker}"></td>
+          <td th:text="${trade.transactionType}"></td>
+          <td th:text="${trade.range}"></td>
+          <td th:text="${trade.politician.name}"></td>
+          <td th:text="${trade.date}"></td>
+          <td th:text="${trade.reportedDate}"></td>
+      </tr>
+
+    </tbody>
+  </table>
+
 <div th:unless="${trades.size() > 0}">
   <h1 class="ticker">No results...</h1>
 </div>
+  </div>
 </div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
