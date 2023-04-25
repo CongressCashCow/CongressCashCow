@@ -30,21 +30,63 @@ public class TradeController {
         this.api = api;
     }
     @GetMapping("/trades")
+<<<<<<< HEAD
+    public String viewTrades(Model model, @RequestParam(required = false,value="searchbar") String searchQuery, @RequestParam(required = false,value="page",defaultValue = "1") String page,@RequestParam(required = false,value="arrow-btn") String pageDir){
+=======
     public String viewTrades(Authentication authentication, Model model, @RequestParam(required = false,value="searchbar") String searchQuery){
+>>>>>>> main
         List<Trade> trades = api.getTrades();
-        List<Trade> searchResults = new ArrayList<>();
-        System.out.println(searchQuery);
+        List<Trade> middleman = new ArrayList<>();
+        String path = null;
+        int limit= 201;
+        if(page == null || page.equals("")){
+            page = "1";
+        }
+        int pageInt = Integer.parseInt(page);
+
+        if(pageDir != null){
+            if(pageDir.equals("right")){
+                pageInt++;
+            }else {
+                pageInt--;
+            }
+
+        }
         if(searchQuery != null && searchQuery.trim().length() > 0){
+            path = String.format("?searchbar=%s&page=%s",searchQuery,page);
             for(Trade t : trades){
                 if(t.getTicker().equalsIgnoreCase(searchQuery)){
-                    searchResults.add(t);
+                    middleman.add(t);
                 }
             }
-            model.addAttribute("trades", searchResults);
+
+        }else {
+            path = String.format("?page=%s",page);
+            middleman = trades;
+        }
+        List<Trade> out = new ArrayList<>();
+
+        if(middleman.size() > limit){
+            int offset = (pageInt - 1) * limit;
+            for(Trade t : middleman){
+//                System.out.println(middleman.indexOf(t));
+                if(middleman.indexOf(t) > offset && middleman.indexOf(t) < offset + limit ){
+                    out.add(t);
+                }
+            }
         }else{
-            model.addAttribute("trades", trades);
+            for (Trade t : middleman){
+                out.add(t);
+            }
         }
 
+<<<<<<< HEAD
+        model.addAttribute("trades", out);
+
+        model.addAttribute("path", path);
+        model.addAttribute("tradeTotal", middleman.size());
+        return "trades";
+=======
         if (authentication != null && authentication.isAuthenticated()) {
             System.out.println("logged in");
 
@@ -60,6 +102,7 @@ public class TradeController {
         }
             return "trades";
 
+>>>>>>> main
     }
 
     @PostMapping("/trades")
