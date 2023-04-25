@@ -5,6 +5,8 @@ import com.milkmoney.Repositories.UserRepository;
 import com.milkmoney.Services.APIService;
 import com.milkmoney.models.Politician;
 import com.milkmoney.models.User;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -85,6 +87,20 @@ public class UserProfileController {
 
         return "redirect:/user-profile";
     }
+    @PostMapping("/delete")
+    public String deleteAcc(HttpServletRequest request){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User fixedUser = userDAO.findById(currentUser.getId()).get();
+        userDAO.delete(fixedUser);
+        HttpSession session= request.getSession(false);
+        SecurityContextHolder.clearContext();
+
+        if(session != null) {
+            session.invalidate();
+        }
+        return "redirect:/login";
+    }
+
     @PostMapping("/user-profile")
     public String rmFavorite(Model model, @RequestParam("pol_id") String name, @RequestParam("follow-btn") boolean follow) {
 
