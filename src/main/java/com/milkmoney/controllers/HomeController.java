@@ -46,16 +46,23 @@ public class HomeController {
         List<String> tradeNames = new ArrayList<>();
         int f = 0;
 
+
         if (authentication != null && authentication.isAuthenticated()) {
             User currentUser = (User) authentication.getPrincipal();
+
+//            if(!userDAO.existsById(currentUser.getId())){
+//                SecurityContextHolder.clearContext();
+//
+//            }
+//            currentUser = (User) authentication.getPrincipal();
             User fixedUser = userDAO.findByUsername(currentUser.getUsername());
-
             List<String> names = new ArrayList<>();
-
+        if(fixedUser != null) {
             for (Politician p : fixedUser.getPoliticians()) {
                 names.add(p.getName());
             }
-            model.addAttribute("names",names);
+            model.addAttribute("names", names);
+        }
         } else {
             System.out.println("logged out");
         }
