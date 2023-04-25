@@ -20,7 +20,14 @@
     </div>
 
     <!-- Politician Specific Page -->
-
+    <div sec:authorize="isAnonymous()" class="anon-banner">
+        Please sign-in or create an account to get full access to Milk Money
+    </div>
+    <div class="w-100 d-flex justify-content-center mb-2">
+        <div class="top20">
+            Recent Trades
+        </div>
+    </div>
         <div class="container c-cus">
             <div sec:authorize="isAuthenticated()" th:each="trade : ${trades}">
                 <div class="card-container">
@@ -66,35 +73,77 @@
                 </div>
             </div>
             <div sec:authorize="isAnonymous()" th:each="trade : ${trades}">
-                <div class="card-container">
-                    <div class="fake-carton-container bg-dark">
-                        <div class="fcc-1"></div>
-                        <div class="fcc-2"></div>
-                        <div class="fcc-3"></div>
-                    </div>
-                    <div class="card-milk">
-                        <div class="date" th:text="${trade.getDate()}"></div>
-                        <div class="card-top">
-                            <img class="img blur" th:src="${trade.getPolitician().getImageURL()}">
-                            <div class="name blur" th:text="${trade.getPolitician().name}"></div>
+
+                <div th:if="${trades.indexOf(trade) < 3}" >
+                    <div class="card-container">
+                        <div class="fake-carton-container">
+                            <div class="fcc-1"></div>
+                            <div class="fcc-2"></div>
+                            <div class="fcc-3"></div>
                         </div>
-                        <div class="card-hr"></div>
-                        <div class="card-bot">
-                            <div class="tickerblur" th:text="${trade.getTicker()}"></div>
-                            <div class="card-bot-right">
-                                <div class="range" th:text="${trade.getRange()}"></div>
-                                <div class="type" th:text="${trade.getTransactionType()}"></div>
+                        <div class="card-milk">
+                            <div class="date" th:text="${trade.getDate()}"></div>
+                            <div class="card-top">
+                                <img class="img" th:src="${trade.getPolitician().getImageURL()}">
+                                <div>
+                                    <div class="name"  th:text="${trade.getPolitician().name}"></div>
+                                </div>
+                            </div>
+                            <div class="card-hr"></div>
+                            <div class="card-bot">
+                                <div class="ticker" th:text="${trade.getTicker()}"></div>
+                                <div class="card-bot-right">
+                                    <div class="range" th:text="${trade.getRange()}"></div>
+                                    <div class="type" th:text="${trade.getTransactionType()}"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="milk-container">
+                            <div class="wave-clip">
+                                <div class="milk-wave"></div>
+                            </div>
+                            <div class="milk"></div>
+                        </div>
+                        <div class="carton"></div>
+                    </div>
+                </div>
+
+                <div th:unless="${trades.indexOf(trade) < 3}">
+                    <div class="card-container">
+                        <div class="fake-carton-container bg-dark">
+                            <div class="fcc-1"></div>
+                            <div class="fcc-2"></div>
+                            <div class="fcc-3"></div>
+                        </div>
+                        <div class="card-milk">
+                            <div class="date" th:text="${trade.getDate()}"></div>
+                            <div class="card-top">
+                                <img class="img blur" th:src="${trade.getPolitician().getImageURL()}">
+                                <div class="name blur" th:text="${trade.getPolitician().name}"></div>
+                            </div>
+                            <div class="card-hr"></div>
+                            <div class="card-bot">
+                                <div class="tickerblur" th:text="${trade.getTicker()}"></div>
+                                <div class="card-bot-right">
+                                    <div class="range" th:text="${trade.getRange()}"></div>
+                                    <div class="type" th:text="${trade.getTransactionType()}"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="milk-container">
-                        <div class="wave-clip">
-                            <div class="milk-wave"></div>
+                        <div class="milk-container">
+                            <div class="wave-clip">
+                                <div class="milk-wave"></div>
+                            </div>
+                            <div class="milk"><a class="d-flex justify-content-center sign-in-prompt" href="/login">Sign In to View!</a></div>
                         </div>
-                        <div class="milk"><a class="d-flex justify-content-center sign-in-prompt" href="/login">Sign In to View!</a></div>
+                        <div class="carton"></div>
                     </div>
-                    <div class="carton"></div>
                 </div>
+
+
+
             </div>
         </div>
 </div>
