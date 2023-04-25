@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+  <script src="https://use.fontawesome.com/18c791aaa7.js"></script>
   <script th:replace="partials/partials :: bootstrap"></script>
+
   <link rel="stylesheet" href="CSS/main.css">
+
   <meta charset="UTF-8">
   <title>Trades</title>
 </head>
@@ -39,8 +42,11 @@
 
       <tr th:each="trade : ${trades}">
 
-          <td th:text="${trade.ticker}"></td>
-          <td th:text="${trade.transactionType}"></td>
+          <td th:text="${trade.ticker}" id="ticker-page"></td>
+        <td>
+          <span th:text="${trade.transactionType}"></span>
+          <i th:class="${trade.transactionType == 'Sale' ? 'fas fa-minus-circle text-danger' : 'fas fa-plus-circle text-success'}"></i>
+        </td>
           <td th:text="${trade.range}"></td>
           <td th:text="${trade.politician.name}"></td>
           <td th:text="${trade.date}"></td>

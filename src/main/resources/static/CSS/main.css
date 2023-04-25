@@ -511,3 +511,24 @@ width: 100%;
     background-color: transparent;
     /*border: none;*/
 }
+
+.fa-minus-circle, .fa-plus-circle {
+    font-size: 1.5em;
+}
+.text-danger {
+    color: red;
+}
+.text-success {
+    color: green;
+}
+
+#ticker-page {
+    color: #00ff59;
+    font-weight: bold;
+
+}
+
+/*#ticker-page:nth-of-type(odd)>*{*/
+/*    color: #00ff59;*/
+/*    font-weight: bold;*/
+/*}*/
