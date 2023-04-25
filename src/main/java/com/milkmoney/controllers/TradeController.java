@@ -85,6 +85,7 @@ public class TradeController {
         }
 
         String out=String.format("redirect:/trades?searchbar=%s", ticker);
+
         return out;
 
     }

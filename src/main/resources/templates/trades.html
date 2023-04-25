@@ -56,6 +56,7 @@
          <a  id="trades-page-name" th:href="@{'/politician-profile?pol=' + ${trade.getPolitician().name}}" th:text="${trade.getPolitician().name}"></a>
        </td>
         <td>
+
           <form th:action="@{/trades}" th:method="POST" >
             <button th:if="${names?.contains(trade.getPolitician().getName())}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn btn btn-primary">Unfollow</button>
             <input type="hidden" id="pol_id" name="pol_id" th:value="${trade.getPolitician().name}">
