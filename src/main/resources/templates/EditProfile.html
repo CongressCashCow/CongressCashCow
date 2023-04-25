@@ -31,7 +31,11 @@
               <input type="password" class="form-control" id="password" th:field="*{password}"  placeholder="Password (Leave blank if you do not wish to change your password)">
             </div>
             <button type="submit" class="login-btn">Save Changes</button>
+<!--            <a href="/delete" class="danger-btn px-1">Delete Profile</a>-->
 
+          </form>
+          <form th:action="@{/delete}" method="POST">
+            <button type="submit" class="danger-btn">Delete Account</button>
           </form>
 
         </div>
