@@ -172,6 +172,8 @@ public class PoliticianController {
 
     }
 
+
+
     public void savePols(){
         politicianDAO.saveAll(api.getPoliticians());
     }

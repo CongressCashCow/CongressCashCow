@@ -34,6 +34,7 @@
       <th>Transaction Type</th>
       <th>Trade Range</th>
       <th>Politician Name</th>
+      <th></th>
       <th>Trade Date</th>
       <th>Reported Date</th>
     </tr>
@@ -42,13 +43,27 @@
 
       <tr th:each="trade : ${trades}">
 
-          <td th:text="${trade.ticker}" id="ticker-page"></td>
+        <td>
+          <a id="ticker-page" th:href="@{'/trades?searchbar=' + ${trade.getTicker()}}" th:text="${trade.getTicker()}"></a>
+        </td>
         <td>
           <span th:text="${trade.transactionType}"></span>
           <i th:class="${trade.transactionType == 'Sale' ? 'fas fa-minus-circle text-danger' : 'fas fa-plus-circle text-success'}"></i>
         </td>
           <td th:text="${trade.range}"></td>
-          <td th:text="${trade.politician.name}"></td>
+
+       <td class="">
+         <a  id="trades-page-name" th:href="@{'/politician-profile?pol=' + ${trade.getPolitician().name}}" th:text="${trade.getPolitician().name}"></a>
+       </td>
+        <td>
+          <form th:action="@{/trades}" th:method="POST" >
+            <button th:if="${names?.contains(trade.getPolitician().getName())}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn btn btn-primary">Unfollow</button>
+            <input type="hidden" id="pol_id" name="pol_id" th:value="${trade.getPolitician().name}">
+            <input type="hidden" id="ticker" name="ticker" th:value="${trade.ticker}">
+            <button th:unless="${names?.contains(trade.getPolitician().getName())}" name="follow-btn" th:value="${true}" type="submit" class="follow-btn btn btn-primary">Follow</button>
+          </form>
+        </td>
+
           <td th:text="${trade.date}"></td>
           <td th:text="${trade.reportedDate}"></td>
       </tr>

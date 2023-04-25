@@ -535,8 +535,15 @@ width: 100%;
 
 #ticker-page {
     color: #00ff59;
+
     font-weight: bold;
 
+}
+
+#trades-page-name {
+    color: #20b9d5;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 /*#ticker-page:nth-of-type(odd)>*{*/
