@@ -19,7 +19,8 @@
 <!--  <input id="tradesearchbar" name="searchbar" type="text" placeholder="Search Trades...">-->
 
 <!--</form>-->
-<h1 class="trade-results" th:text="${trades.size() + ' Results'}"></h1>
+<h1 class="trade-results" th:text="${tradeTotal + ' Results'}"></h1>
+
   </div>
 <div th:if="${trades.size() > 0}">
   <div th:each="trade : ${trades}">
@@ -32,10 +33,15 @@
       <span class="trade-text" th:text="${trade.reportedDate}"></span>
     </div>
   </div>
+  <form  class="trade-form" th:action="@{/trades{path}(path=${path})}"  >
+    <button name="arrow-btn" th:value="left" th:text="back"></button>
+    <button name="arrow-btn" th:value="right" th:text="forward"></button>
+  </form>
 </div>
 <div th:unless="${trades.size() > 0}">
   <h1 class="ticker">No results...</h1>
 </div>
+
 </div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
