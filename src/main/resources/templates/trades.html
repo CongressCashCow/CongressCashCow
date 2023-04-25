@@ -13,56 +13,33 @@
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 <div class="background p-4">
   <div class="trades-top">
-<!--<form class="m-0" id="search-form" action="/trades">-->
+    <!--<form class="m-0" id="search-form" action="/trades">-->
 
-<!--  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#eeeeee" class="bi bi-search zen-search-icon" viewBox="0 0 16 16">-->
-<!--    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
-<!--  </svg>-->
+    <!--  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#eeeeee" class="bi bi-search zen-search-icon" viewBox="0 0 16 16">-->
+    <!--    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
+    <!--  </svg>-->
 
-<!--  <input id="tradesearchbar" name="searchbar" type="text" placeholder="Search Trades...">-->
+    <!--  <input id="tradesearchbar" name="searchbar" type="text" placeholder="Search Trades...">-->
 
-<!--</form>-->
-<h1 class="trade-results" th:text="${tradeTotal + ' Results'}"></h1>
-
+    <!--</form>-->
+    <h1 class="trade-results" th:text="${trades.size() + ' Results'}"></h1>
   </div>
-<<<<<<< HEAD
-<div th:if="${trades.size() > 0}">
-  <div th:each="trade : ${trades}">
-    <div>
-      <span class="ticker" th:text="${trade.ticker}"></span>
-      <span class="trade-text" th:text="${trade.transactionType}"></span>
-      <span class="trade-text" th:text="${trade.range}"></span>
-      <span class="trade-text" th:text="${trade.politician.name}"></span>
-      <span class="trade-text" th:text="${trade.date}"></span>
-      <span class="trade-text" th:text="${trade.reportedDate}"></span>
-    </div>
-  </div>
-  <form  class="trade-form" th:action="@{/trades{path}(path=${path})}"  >
-    <button name="arrow-btn" th:value="left" th:text="back"></button>
-    <button name="arrow-btn" th:value="right" th:text="forward"></button>
-  </form>
-</div>
-<div th:unless="${trades.size() > 0}">
-  <h1 class="ticker">No results...</h1>
-</div>
-
-=======
 
 
   <div th:if="${trades.size() > 0}">
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Ticker</th>
-      <th>Transaction Type</th>
-      <th>Trade Range</th>
-      <th>Politician Name</th>
-      <th></th>
-      <th>Trade Date</th>
-      <th>Reported Date</th>
-    </tr>
-    </thead>
-    <tbody>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Ticker</th>
+        <th>Transaction Type</th>
+        <th>Trade Range</th>
+        <th>Politician Name</th>
+        <th></th>
+        <th>Trade Date</th>
+        <th>Reported Date</th>
+      </tr>
+      </thead>
+      <tbody>
 
       <tr th:each="trade : ${trades}">
 
@@ -73,11 +50,11 @@
           <span th:text="${trade.transactionType}"></span>
           <i th:class="${trade.transactionType == 'Sale' ? 'fas fa-minus-circle text-danger' : 'fas fa-plus-circle text-success'}"></i>
         </td>
-          <td th:text="${trade.range}"></td>
+        <td th:text="${trade.range}"></td>
 
-       <td class="">
-         <a  id="trades-page-name" th:href="@{'/politician-profile?pol=' + ${trade.getPolitician().name}}" th:text="${trade.getPolitician().name}"></a>
-       </td>
+        <td class="">
+          <a  id="trades-page-name" th:href="@{'/politician-profile?pol=' + ${trade.getPolitician().name}}" th:text="${trade.getPolitician().name}"></a>
+        </td>
         <td>
 
           <form th:action="@{/trades}" th:method="POST" >
@@ -88,18 +65,17 @@
           </form>
         </td>
 
-          <td th:text="${trade.date}"></td>
-          <td th:text="${trade.reportedDate}"></td>
+        <td th:text="${trade.date}"></td>
+        <td th:text="${trade.reportedDate}"></td>
       </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
 
-<div th:unless="${trades.size() > 0}">
-  <h1 class="ticker">No results...</h1>
-</div>
+    <div th:unless="${trades.size() > 0}">
+      <h1 class="ticker">No results...</h1>
+    </div>
   </div>
->>>>>>> main
 </div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>
