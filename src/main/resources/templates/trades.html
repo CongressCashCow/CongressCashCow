@@ -24,6 +24,12 @@
     <!--</form>-->
     <h1 class="trade-results" th:text="${trades.size() + ' Results'}"></h1>
   </div>
+<hr>
+  <form th:if="${!searched}" th:action="@{/trades}" th:method="GET" class="mb-5 trade-nav-form">
+    <button  name="page" th:value="${curPage - 1}" type="submit" class="login-btn"><<</button>
+    <!--      <input type="hidden" id="page" name="pol_id" th:value="${pol.getName()}">-->
+    <button  name="page" th:value="${curPage + 1}" type="submit" class="login-btn">>></button>
+  </form>
 
 
   <div th:if="${trades.size() > 0}">
