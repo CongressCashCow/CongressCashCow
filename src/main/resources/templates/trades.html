@@ -41,7 +41,7 @@
       </thead>
       <tbody>
 
-      <tr th:each="trade : ${trades}">
+      <tr th:each="trade : ${page}">
 
         <td>
           <a id="ticker-page" th:href="@{'/trades?searchbar=' + ${trade.getTicker()}}" th:text="${trade.getTicker()}"></a>
@@ -61,6 +61,8 @@
             <button th:if="${names?.contains(trade.getPolitician().getName())}" name="follow-btn" th:value="${false}" type="submit" class="unfollow-btn btn btn-primary">Unfollow</button>
             <input type="hidden" id="pol_id" name="pol_id" th:value="${trade.getPolitician().name}">
             <input type="hidden" id="ticker" name="ticker" th:value="${trade.ticker}">
+            <input type="hidden" id="search" name="search" th:value="${searched}">
+            <input type="hidden" id="thisPage" name="thisPage" th:value="${curPage}">
             <button th:unless="${names?.contains(trade.getPolitician().getName())}" name="follow-btn" th:value="${true}" type="submit" class="follow-btn btn btn-primary">Follow</button>
           </form>
         </td>
@@ -75,6 +77,11 @@
     <div th:unless="${trades.size() > 0}">
       <h1 class="ticker">No results...</h1>
     </div>
+    <form th:if="${!searched}" th:action="@{/trades}" th:method="GET" class="mb-5 trade-nav-form">
+      <button  name="page" th:value="${curPage - 1}" type="submit" class="login-btn"><<</button>
+<!--      <input type="hidden" id="page" name="pol_id" th:value="${pol.getName()}">-->
+      <button  name="page" th:value="${curPage + 1}" type="submit" class="login-btn">>></button>
+    </form>
   </div>
 </div>
 <footer th:replace="partials/partials :: footer"></footer>

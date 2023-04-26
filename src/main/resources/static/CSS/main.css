@@ -576,3 +576,13 @@ width: 100%;
 .pol-prof-avatar{
     height: 25em;
 }
+
+.trade-nav-form{
+    display: flex;
+    justify-content: center;
+}
+.trade-nav-form>button{
+    margin: 0.5em;
+    border-radius: 0.75em;
+    padding: 0 0.5em 0 0.5em;
+}
