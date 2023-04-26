@@ -90,8 +90,8 @@ public class PoliticianProfileController {
             userDAO.save(fixedUser);
             System.out.println("removed");
         }
-
-        return "redirect:/politician-profile";
+        String output = String.format("redirect:/politician-profile?pol=%s",name);
+        return output;
     }
 
 
