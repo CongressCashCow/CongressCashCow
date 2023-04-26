@@ -570,7 +570,11 @@ width: 100%;
 .zen-user-profile-left{
     min-height: 30em;
 }
+
 .trade-form{
     height: 8em;
+}
+.pol-prof-avatar{
+    height: 25em;
 }
 
