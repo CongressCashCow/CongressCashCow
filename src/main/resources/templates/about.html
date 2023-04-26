@@ -9,34 +9,55 @@
     <nav th:replace="partials/partials :: navbar(isAuthenticated=${#authentication.principal != 'anonymousUser'})"></nav>
     <meta charset="UTF-8">
     <title>Milk Money | About Us</title>
-<!--    <link th:replace="partials/partials :: bootstrap"></link>-->
+    <!--    <link th:replace="partials/partials :: bootstrap"></link>-->
 
 </head>
 <body>
 
 <div class="about background">
-    <h1>About Milk-Money</h1>
-    <p>Keeping track of the stock market activity can be a daunting task for the average person, especially for beginners. The Milk-Money application was created to make it easier for individuals to stay up-to-date on the latest hot trades made by politicians in the US Congress.</p>
+    <div class="mb-5">
+        <h1>About Milk-Money</h1>
+        <h2>Keeping track of the stock market activity can be a daunting task for the average American. The Milk-Money
+            application was created to make it easier for individuals to stay up-to-date on the latest hot trades made
+            by US Congress politicians.</h2>
+    </div>
+    <div class="mb-3">
+        <h3>What is Milk-Money?</h3>
+        <h4>Milk-Money is a web-based application that allows users to easily follow stock market activity made by US
+            Congress politicians. The application provides the latest updates each politician's trades, allowing users
+            to
+            stay informed on the latest market trends and changes.</h4>
+    </div>
+    <div class="mb-3">
+        <h3>Why use Milk-Money?</h3>
 
-    <h2>What is Milk-Money?</h2>
-    <p>Milk-Money is a web-based application that allows users to easily monitor the stock market activity of politicians in the US Congress. The application provides real-time updates on trades made by politicians, allowing users to stay informed on the latest market trends and changes.</p>
-
-    <h2>Why use Milk-Money?</h2>
-
-    <ul>
-        <li>To stay informed on the latest stock market activity of politicians in the US Congress.</li>
-        <li>To monitor the trading activity of politicians who may have an impact on the economy.</li>
-        <li>To learn more about investing in the stock market and how politicians may influence market trends.</li>
-    </ul>
-
-    <h2>How does Milk-Money work?</h2>
-    <p>Milk-Money uses legal available data to track (stalk) the stock market activity of politicians in the US Congress. The application provides real-time updates on trades made by politicians, including the type of stock, the number of shares traded, and the date of the transaction. Users can search for specific politicians or view the latest trades made by all politicians.</p>
-
-    <h2>Who can use Milk-Money?</h2>
-    <p>Milk-Money is available to anyone who wants to stay informed on the stock market activity of politicians in the US Congress. The application is designed to be user-friendly and accessible to individuals of all experience levels.</p>
-
-    <h2>Getting started with Milk-Money</h2>
-    <p>To get started with Milk-Money, simply create an account on our website. Once you have an account, you can start monitoring the latest trades made by politicians in the US Congress.</p>
+        <ul>
+            <li>To stay informed on the latest stock market activity made by US Congress politicians.</li>
+            <li>To follow the trading activity of each politician, who may have also an impact on the economy.</li>
+            <li>To learn more about investing in the stock market and how politicians may influence market trends.</li>
+        </ul>
+    </div>
+    <div class="mb-3">
+        <h3>How does Milk-Money work?</h3>
+        <h4>Milk-Money uses legal available data to track (stalk) the stock market activity of politicians in the US
+            Congress. The application provides the latest updates on trades made by politicians, including the type of
+            stock, the number of shares traded, and the date of the transaction. Users can search for specific
+            politicians
+            or view the latest trades made by all politicians.</h4>
+    </div>
+    <div class="mb-3">
+        <h3>Who can use Milk-Money?</h3>
+        <h4>Milk-Money is available to anyone who wants to stay informed on the stock market activity made by US
+            Congress
+            politicians. The application is designed to be user-friendly and accessible to individuals of all experience
+            levels.</h4>
+    </div>
+    <div class="mb-3">
+        <h3>Getting started with Milk-Money</h3>
+        <h4>To get started with Milk-Money, simply create an account on our website. Once you have an account, you can
+            start
+            following the latest trades made by politicians in the US Congress.</h4>
+    </div>
 </div>
 <footer th:replace="partials/partials :: footer"></footer>
 <script th:replace="partials/partials :: bootstrap-footer"></script>

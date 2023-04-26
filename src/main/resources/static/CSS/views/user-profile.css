@@ -65,3 +65,7 @@
 #buttons-section button {
     margin-right: 10px;
 }
+
+.zen-ps-sticky{
+    position: sticky;
+}
