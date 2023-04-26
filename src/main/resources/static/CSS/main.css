@@ -133,8 +133,8 @@ body {
 .gs{
     filter: grayscale(1);
 }
-.zen-ps-fixed{
-    position: fixed;
+.zen-ps-sticky{
+    position: sticky;
 }
 .name {
     color: #eee;
