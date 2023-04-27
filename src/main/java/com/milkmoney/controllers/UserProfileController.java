@@ -77,9 +77,11 @@ public class UserProfileController {
             hasChanged = true;
         }
         String hashedPW = passwordEncoder.encode(user.getPassword());
-        if(!hashedPW.equals(fixedUser.getPassword())){
-            fixedUser.setPassword(hashedPW);
-            hasChanged = true;
+        if(user.getPassword().length() > 0) {
+            if (!hashedPW.equals(fixedUser.getPassword())) {
+                fixedUser.setPassword(hashedPW);
+                hasChanged = true;
+            }
         }
         if(hasChanged){
             userDAO.save(fixedUser);
