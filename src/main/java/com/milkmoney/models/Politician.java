@@ -126,23 +126,28 @@ public class Politician {
         BigDecimal ptotalLow = BigDecimal.ZERO;
         BigDecimal ptotalHigh = BigDecimal.ZERO;
         for(Trade t : trades){
+//            System.out.println(t.getRange());
             if(t.getTransactionType().equals("Sale")) {
                 if(t.getRange().contains("-")) {
                     String[] arr = t.getRange().replace(" ", "").replace(",", "").replace("$", "").split("-", 2);
+
                     stotalLow = stotalLow.add(new BigDecimal(arr[0]));
                     stotalHigh = stotalHigh.add(new BigDecimal(arr[1]));
                 } else {
                     stotalLow = stotalLow.add(new BigDecimal(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "")));
                     stotalHigh = stotalHigh.add(new BigDecimal(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "")));
+
                 }
             } else if (t.getTransactionType().equals("Purchase")) {
                 if(t.getRange().contains("-")) {
                     String[] arr = t.getRange().replace(" ", "").replace(",", "").replace("$", "").split("-", 2);
+
                     ptotalLow = ptotalLow.add(new BigDecimal(arr[0]));
                     ptotalHigh = ptotalHigh.add(new BigDecimal(arr[1]));
                 } else {
                     ptotalLow = ptotalLow.add(new BigDecimal(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "")));
                     ptotalHigh = ptotalHigh.add(new BigDecimal(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "")));
+
                 }
             }
         }
