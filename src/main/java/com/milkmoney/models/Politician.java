@@ -88,23 +88,25 @@ public class Politician {
         long ptotalLow = 0;
         long ptotalHigh = 0;
         for(Trade t : trades){
+//            System.out.println(t.getRange());
             if(t.getTransactionType().equals("Sale")) {
                 if(t.getRange().contains("-")) {
                     String[] arr = t.getRange().replace(" ", "").replace(",", "").replace("$", "").split("-", 2);
                     stotalLow += Long.parseLong(arr[0]);
                     stotalHigh += Long.parseLong(arr[1]);
                 }else{
-                    stotalLow += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", ""));
-                    stotalHigh += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", ""));
+                    System.out.println(Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "").replace(">", "")));
+                    stotalLow += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "").replace(">", ""));
+                    stotalHigh += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "").replace(">", ""));
                 }
             } else if (t.getTransactionType().equals("Purchase")) {
                 if(t.getRange().contains("-")) {
-                String[] arr = t.getRange().replace(" ", "").replace(",", "").replace("$", "").split("-", 2);
-                ptotalLow += Long.parseLong(arr[0]);
-                ptotalHigh += Long.parseLong(arr[1]);
+                    String[] arr = t.getRange().replace(" ", "").replace(",", "").replace("$", "").split("-", 2);
+                    ptotalLow += Long.parseLong(arr[0]);
+                    ptotalHigh += Long.parseLong(arr[1]);
                 }else{
-                    ptotalLow += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", ""));
-                    ptotalHigh += Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", ""));
+                    ptotalLow += Math.floor(Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "").replace(">", "")));
+                    ptotalHigh += Math.floor(Long.parseLong(t.getRange().replace(" ", "").replace(",", "").replace("$", "").replace("+", "").replace(">", "")));
 
                 }
             }
