@@ -35,7 +35,7 @@ public class TradeController {
         Pageable pageable = PageRequest.of(pageNo, pagesize, Sort.by("ticker"));
         int max = pageNo >= totalpages? list.size():pagesize*(pageNo+1);
         int min = pageNo > totalpages? max:pagesize*pageNo;
-        return new PageImpl<>(list.subList(min, max), pageable, list.size());
+        return new PageImpl<Trade>(list.subList(min, max), pageable, list.size());
     }
 
     @GetMapping("/trades")
