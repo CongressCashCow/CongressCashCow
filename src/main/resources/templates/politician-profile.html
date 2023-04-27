@@ -28,7 +28,17 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <h4>Total Trade Amount:</h4>
+                <div th:with="totals=${pol.getTotals()}">
+                    <p>Sell Low: <span th:text="${totals[0]}"></span></p>
+                    <p>Sell High: <span th:text="${totals[1]}"></span></p>
+                    <p>Purchase Low: <span th:text="${totals[2]}"></span></p>
+                    <p>Purchase High: <span th:text="${totals[3]}"></span></p>
+                </div>
+            </div>
         </div>
+
         <div class="col-md-8">
             <div class="scrollable">
                 <div class="container">
