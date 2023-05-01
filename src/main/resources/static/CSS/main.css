@@ -196,6 +196,12 @@ body {
     transition: font-weight 1s;
 
 }
+.trade-results-small{
+    color: #9f598b;
+    font-size: 2vw;
+    font-weight: lighter;
+}
+
 .trade-results {
     color: #de7dc2;
     font-size: 4vw;
