@@ -193,6 +193,8 @@ body {
     color: #31d761;
     font-size: 4vw;
     font-weight: lighter;
+    transition: font-weight 1s;
+
 }
 .trade-results {
     color: #de7dc2;
@@ -213,6 +215,11 @@ body {
     width: 90%;
     /*height: 33em;*/
 }
+
+.card-container:hover .ticker{
+    font-weight: 1000;
+}
+
 
 .fake-carton-container {
     z-index: 1;
