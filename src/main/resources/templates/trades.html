@@ -23,6 +23,7 @@
 
     <!--</form>-->
     <h1 class="trade-results" th:text="${trades.size() + ' Results'}"></h1>
+    <h1 class="trade-results-small" th:text="${(((curPage + 1) * 200)-199) + '-' + ((curPage + 1) * 200)}"></h1>
   </div>
 <hr>
   <form th:if="${!searched}" th:action="@{/trades}" th:method="GET" class="mb-5 trade-nav-form">
